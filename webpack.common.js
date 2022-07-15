@@ -1,5 +1,6 @@
 const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
     entry: "./index.js",
@@ -11,6 +12,14 @@ module.exports = {
         new HTMLWebpackPlugin({
             template: path.resolve(__dirname, "index.html"),
             inject: true
+        }),
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: path.resolve(__dirname, "assets/img/*").replace(/\\/g, "/"),
+                    to: path.resolve(__dirname, "dist")
+                }
+            ]
         })
     ]
 }

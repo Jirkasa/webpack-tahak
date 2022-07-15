@@ -1,0 +1,12 @@
+#display-12-grid() {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: @grid-gutter;
+}
+
+#center-pos-abs() {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

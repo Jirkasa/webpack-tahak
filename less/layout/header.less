@@ -1,11 +1,19 @@
 .header {
     background-color: @colors[primary-dark];
 
-    padding: .8rem 3.2rem;
+    height: @header-height;
+
+    padding: 0 3.2rem;
 
     &__content {
         max-width: @grid-width;
         margin: 0 auto;
+
+        height: 100%;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
     &__title {
