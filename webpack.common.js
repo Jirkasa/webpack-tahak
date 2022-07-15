@@ -13,6 +13,11 @@ module.exports = {
             template: path.resolve(__dirname, "index.html"),
             inject: true
         }),
+        new HTMLWebpackPlugin({ // todo - potom přijdu na lepší způsob jak ty stránky vygenerovat
+            template: path.resolve(__dirname, "tutorial", "co-je-to-webpack", "index.html"),
+            filename: "tutorial/co-je-to-webpack/index.html",
+            inject: true
+        }),
         new CopyPlugin({
             patterns: [
                 {
