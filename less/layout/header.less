@@ -5,6 +5,16 @@
 
     padding: 0 3.2rem;
 
+    &--fixed {
+        position: fixed;
+        z-index: 30;
+        width: 100%;
+        max-width: @max-page-width;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
     &__content {
         max-width: @grid-width;
         margin: 0 auto;
@@ -33,4 +43,9 @@
         display: flex;
         gap: 1.6rem;
     }
+}
+
+.header-container {
+    height: @header-height;
+    background-color: @colors[primary-dark];
 }
