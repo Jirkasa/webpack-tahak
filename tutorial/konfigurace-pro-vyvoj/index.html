@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=yes maximum-scale=2.2 minimum-scale=1.0">
+
+    <script src="../../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <title>Tutoriál - Konfigurace pro vývoj | Webpack Tahák</title>
+</head>
+<body>
+    <div class="page">
+        <header class="header">
+            <div class="header__content">
+                <a href="../../" class="header__title">Webpack Tahák</a>
+                <div class="header__navigation">
+                    <a href="../co-je-to-webpack/" class="header-link header-link--active">Tutoriál</a>
+                    <a href="#" class="header-link">Tahák</a>
+                </div>
+            </div>
+        </header>
+        <div class="article-layout">
+            <div class="article-layout__container">
+                <nav class="article-layout__sidebar">
+                    <ul class="navigation">
+                        <li><a href="../co-je-to-webpack/" class="navigation__item">Co je to Webpack</a></li>
+                        <li><a href="../instalace/" class="navigation__item">Instalace</a></li>
+                        <li><a href="../zabaleni-javascriptu/" class="navigation__item">Zabalení JavaScriptu</a></li>
+                        <li><a href="../zpracovani-css-stylu/" class="navigation__item">Zpracování CSS stylů</a></li>
+                        <li><a href="../html-soubor-a-obrazky/" class="navigation__item">HTML soubor a obrázky</a></li>
+                        <li><a href="../konfigurace-pro-vyvoj/" class="navigation__item navigation__item--active">Konfigurace pro vývoj</a></li>
+                    </ul>
+                </nav>
+                <main class="article-layout__content">
+                    <h1 class="heading-primary u-mb-6">Konfigurace pro vývoj</h1>
+                    <p class="paragraph u-mb-2">V minulé části jsme dokončili naši konfiguraci pro sestavení aplikace pro produkci. Pokud bychom teď ale na naší aplikaci chtěli dále pracovat, tak to pro nás nebude vůbec komfortní. Museli bychom po každé změně psát příkaz "npm run build" a čekat až se aplikace sestaví. Proto si v této části vytvoříme konfiguraci, kterou budeme používat pro vývoj.</p>
+                    <p class="paragraph u-mb-2">Pokud z nějakého důvodu nemáte kód z minulé části, tak si můžete stáhnout startovní kód pro tuto část. Po stažení nezapomeňte nainstalovat balíčky pomocí příkazu "npm install".</p>
+                    <div class="u-center-text u-mb-4">
+                        <a href="#" class="button-secondary">
+                            <svg>
+                                <use xlink:href="../../assets/img/icon-sprite.svg#icon-file_download"></use>
+                            </svg>
+                            <span>Stáhnout startovní kód</span>
+                        </a>
+                    </div>
+                    <h2 class="heading-secondary u-mb-2">Rozdělení konfigurace do dvou souborů</h2>
+                    <p class="paragraph u-mb-2">Mohli bychom si sice pro vývoj vytvořit konfigurační soubor úplně od začátku, ale můžeme využít toho, že některé věci budou společné pro produkci i pro vývoj. Proto si naši aktuální konfiguraci rozdělíme na dva soubory tak, aby nastavení, která budou použita i pro vývoj, byla v samostatném souboru.</p>
+                    <p class="paragraph u-mb-2">Nejprve si vytvoříme soubor webpack.common.js, do kterého ze souboru webpack.config.js přesuneme části konfigurace, které jsou společné i pro vývoj.</p>
+                    <pre class="code-box u-mb-2"><code>const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
+
+module.exports = {
+    entry: "./index.js",
+    output: {
+        filename: "index.js",
+        path: path.resolve(__dirname, "dist"),
+        clean: true
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: "./index.html"
+        }),
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: path.resolve(__dirname, "assets/img/*").replace(/\\/g, "/"),
+                    to: path.resolve(__dirname, "dist")
+                }
+            ]
+        })
+    ]
+}</code></pre>
+                    <p class="paragraph u-mb-2">Protože budeme mít kromě konfiguračního souboru webpack.config.js i další konfigurační soubor pro vývoj, tak by jeho název nemusel dostatečně popisovat, že se jedná o konfiguraci pro produkci. Přejmenujeme jej tedy na webpack.prod.js, aby bylo jasné, že se jedná o konfiguraci pro produkci. Poté co jsme část konfigurace přesunuli do souboru webpack.common.js, by měl obsahovat následující kód:</p>
+                    <pre class="code-box u-mb-2"><code>const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+
+module.exports = {
+    module: {
+        rules: [
+            {
+                test: /\.css$/i,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    "css-loader",
+                    {
+                        loader: "postcss-loader",
+                        options: {
+                            postcssOptions: {
+                                plugins: [
+                                    ["postcss-preset-env", {}]
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.less$/i,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    "css-loader",
+                    {
+                        loader: "postcss-loader",
+                        options: {
+                            postcssOptions: {
+                                plugins: [
+                                    ["postcss-preset-env", {}]
+                                ]
+                            }
+                        }
+                    },
+                    "less-loader"
+                ]
+            }
+        ]
+    },
+    optimization: {
+        minimizer: [
+            `...`,
+            new CssMinimizerPlugin()
+        ]
+    },
+    plugins: [
+        new MiniCssExtractPlugin()
+    ]
+}</code></pre>
+                    <p class="paragraph u-mb-2">Teď budeme naši konfiguraci v souboru webpack.prod.js muset sloučit s konfigurací v souboru webpack.common.js. K tomu použijeme balíček webpack-merge. Nainstalujeme jej pomocí následujícího příkazu:</p>
+                    <pre class="code-box u-mb-2"><code>npm install --save-dev webpack-merge</code></pre>
+                    <p class="paragraph u-mb-2">Až se nám balíček nainstaluje, tak jej můžeme použít. Použijeme jej v souboru webpack.prod.js. Balíček webpack-merge nám poskytuje funkci merge, které můžeme předat více konfiguračních objektů pro jejich sloučení dohromady. Následující ukázka to ukazuje. Protože soubor webpack.common.js exportuje konfigurační soubor, tak si jej do souboru můžeme naimportovat a použít.</p>
+                    <pre class="code-box u-mb-2"><code>const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const { merge } = require("webpack-merge");
+const commonConfig = require("./webpack.common");
+
+module.exports = merge(commonConfig, {
+    module: {
+        rules: [
+            {
+                test: /\.css$/i,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    "css-loader",
+                    {
+                        loader: "postcss-loader",
+                        options: {
+                            postcssOptions: {
+                                plugins: [
+                                    ["postcss-preset-env", {}]
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.less$/i,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    "css-loader",
+                    {
+                        loader: "postcss-loader",
+                        options: {
+                            postcssOptions: {
+                                plugins: [
+                                    ["postcss-preset-env", {}]
+                                ]
+                            }
+                        }
+                    },
+                    "less-loader"
+                ]
+            }
+        ]
+    },
+    optimization: {
+        minimizer: [
+            `...`,
+            new CssMinimizerPlugin()
+        ]
+    },
+    plugins: [
+        new MiniCssExtractPlugin()
+    ]
+});</code></pre>
+                    <p class="paragraph u-mb-2">Pokud si aplikaci zkusíte sestavit, vše by mělo fungovat jako předtím. Akorát jsme tedy změnili název konfigurační souboru na webpack.prod.js, takže to musíme změnit i ve skriptu v package.json.</p>
+                    <pre class="code-box u-mb-4"><code>"build": "webpack --config webpack.prod.js --mode production"</code></pre>
+                    <h2 class="heading-secondary u-mb-2">Konfigurační soubor pro vývoj</h2>
+                    <p class="paragraph u-mb-2">Části konfigurace, které jsou společné pro vývoj i produkci jsme přesunuli do samostatného souboru. Můžeme tedy vytvořit konfigurační soubor pro vývoj. Můžeme jej nazvat třeba jako webpack.dev.js. Zatím bude obsahovat jen loadery pro CSS a LESS soubory, ale narozdíl od konfiguraci pro produkci se budou styly kompilovat do JavaScriptu aby to bylo rychlejší.</p>
+                    <pre class="code-box u-mb-2"><code>const { merge } = require("webpack-merge");
+const commonConfig = require("./webpack.common");
+
+module.exports = merge(commonConfig, {
+    module: {
+        rules: [
+            {
+                test: /\.css$/i,
+                use: ["style-loader", "css-loader"]
+            },
+            {
+                test: /\.less$/i,
+                use: ["style-loader", "css-loader", "less-loader"]
+            }
+        ]
+    }
+});</code></pre>
+                    <p class="paragraph u-mb-2">K sestavení aplikace pro vývoj si musíme v package.json vytvořit nový skript. Budeme Webpack spouštět s konfiguračním souborem webpack.dev.js v módu pro vývoj. Tento skript můžeme nazvat třeba jako "dev".</p>
+                    <pre class="code-box u-mb-2"><code>"dev": "webpack --config webpack.dev.js --mode development"</code></pre>
+                    <p class="paragraph u-mb-4">Pokud skript spustíme příkazem "npm run dev", tak by se nám aplikace měla sestavit.</p>
+                    <h2 class="heading-secondary u-mb-2">Dev Server</h2>
+                    <p class="paragraph u-mb-2">I když sestavení pro vývoj trvá kratší dobu, tak není moc komfortní po každé změně psát "npm run dev" aby se nám aplikace sestavila. Proto si můžeme nainstalovat Dev Server, který se o to postará za nás. Nainstalujeme jej tímto příkazem:</p>
+                    <pre class="code-box u-mb-2"><code>npm install --save-dev webpack-dev-server</code></pre>
+                    <p class="paragraph u-mb-2">Po instalaci si můžeme Dev Server nakonfigurovat v konfiguračním souboru pro vývoj prostřednictvím vlastnosti devServer. Nastavíme kterou složku chceme servírovat a na jakém portu.</p>
+                    <pre class="code-box u-mb-2"><code>const { merge } = require("webpack-merge");
+const commonConfig = require("./webpack.common");
+
+module.exports = merge(commonConfig, {
+    module: {
+        rules: [
+            {
+                test: /\.css$/i,
+                use: ["style-loader", "css-loader"]
+            },
+            {
+                test: /\.less$/i,
+                use: ["style-loader", "css-loader", "less-loader"]
+            }
+        ]
+    },
+    devServer: {
+        static: "./dist",
+        port: "3000"
+    }
+});</code></pre>
+                    <p class="paragraph u-mb-2">Aby se nám Dev Server při spuštění Webpacku spustil, tak musíme upravit náš skript v package.json. Za webpack dopíšeme text "serve" a na konec můžeme přidat možnost --open, což zajistí, že se nám naše aplikace automaticky otevře v prohlížeči.</p>
+                    <pre class="code-box u-mb-2"><code>"dev": "webpack serve --config webpack.dev.js --mode development --open"</code></pre>
+                    <p class="paragraph u-mb-2">Teď můžeme Webpack s naší konfigurací pro vývoj spustit a v prohlížeči by se nám naše aplikace měla automaticky otevřít. Pokud by se z nějakého důvodu neotevřela, tak bude k dispozici na této adrese: <a href="http://localhost:3000/" target="_blank" class="link">http://localhost:3000/</a>. Pokud teď v našem kódu provedeme nějakou změnu, tak se nám aplikace automaticky sestaví aniž bychom museli znovu psát příkaz "npm run dev". Další výhoda je ta, že pokud provedeme změny v našem CSS nebo JavaScript kódu, tak se aplikace v prohlížeči automaticky aktualizuje bez toho, aniž bychom museli manuálně obnovovat stránku. Klidně si zkuste třeba v CSS kódu změnit nějakou barvu, aplikace se automaticky aktualizuje.</p>
+                    <div class="u-center-text u-mb-4">
+                        <a href="#" class="button-secondary">
+                            <svg>
+                                <use xlink:href="../../assets/img/icon-sprite.svg#icon-file_download"></use>
+                            </svg>
+                            <span>Stáhnout finální kód</span>
+                        </a>
+                    </div>
+                    <h2 class="heading-secondary u-mb-2">Závěr</h2>
+                    <p class="paragraph u-mb-2">V tomto tutoriálu jste si zkusili s Webpackem pracovat a přidat jej do již existující aplikace, kterou jsem pro tento tutoriál vytvořil. Nyní byste měli být připraveni Webpack používat ve svých vlastních projektech. Možná vám může připadat, že i po dokončení tohoto tutoriálu toho o Webpacku moc nevíte a necítíte se na to jej používat. To je v pořádku, myslím že to tak má spoustu lidí. Webpack není něco co byste měli umět nazpaměť, je to hlavně o tom umět si vygooglovat nebo si najít v dokumentaci, jak něco nakonfigurovat. Ze začátku pro vás práce s Webpackem možná nebude nic jednoduchého, ale až si jej trochu osaháte, tak se to zlepší. Na konec vám přeji, abyste si při konfiguraci Webpacku nerozbili klávesnici nebo myš až jej budete používat ve vlastních projektech.</p>
+                    <div class="gif-container">
+                        <div style="width:100%;height:0;padding-bottom:74%;position:relative;"><iframe src="https://giphy.com/embed/14pUUmCj9ysy6A" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/giphyqa-14pUUmCj9ysy6A">via GIPHY</a></p>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <footer class="footer"><p>Tento web vytvořil Jiří Satora</p></footer>
+    </div>
+</body>
+</html>
