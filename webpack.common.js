@@ -36,6 +36,10 @@ module.exports = {
                 {
                     from: path.resolve(__dirname, "assets/js/*").replace(/\\/g, "/"),
                     to: path.resolve(__dirname, "dist")
+                },
+                {
+                    from: path.resolve(__dirname, "assets/webpack-tutorial-app-codes/*").replace(/\\/g, "/"),
+                    to: path.resolve(__dirname, "dist")
                 }
             ]
         })
