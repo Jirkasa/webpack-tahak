@@ -15,6 +15,16 @@ fs.readdirSync("./tutorial").forEach(pageName => {
     }));
 });
 
+// CREATE PLUGINS FOR CHEATSHEET PAGES
+const htmlPluginsForCheatsheetPages = [];
+fs.readdirSync("./tahak").forEach(pageName => {
+    htmlPluginsForCheatsheetPages.push(new HtmlWebpackPlugin({
+        template: path.resolve(__dirname, "tahak", pageName, "index.html"),
+        filename: `tahak/${pageName}/index.html`,
+        inject: true
+    }));
+});
+
 module.exports = {
     entry: "./index.js",
     output: {
@@ -27,6 +37,7 @@ module.exports = {
             inject: true
         }),
         ...htmlPluginsForTutorialPages,
+        ...htmlPluginsForCheatsheetPages,
         new CopyPlugin({
             patterns: [
                 {
