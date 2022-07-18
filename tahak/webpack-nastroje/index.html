@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=yes maximum-scale=2.2 minimum-scale=1.0">
+
+    <script src="../../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <title>Webpack nástroje | Webpack Tahák</title>
+</head>
+<body>
+    <div class="page">
+        <div id="header-container" class="header-container">
+            <header id="header" class="header">
+                <div class="header__content">
+                    <a href="../../" class="header__title">Webpack Tahák</a>
+                    <div class="header__navigation">
+                        <a href="../../tutorial/co-je-to-webpack/" class="header-link">Tutoriál</a>
+                        <a href="../../tahak/vstupni-soubory/" class="header-link header-link--active">Tahák</a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="article-layout">
+            <div class="article-layout__container">
+                <nav class="article-layout__sidebar">
+                    <ul class="navigation">
+                        <li><a href="../vstupni-soubory/" class="navigation__item">Vstupní soubory</a></li>
+                        <li><a href="../vystup/" class="navigation__item">Výstup</a></li>
+                        <li><a href="../loadery/" class="navigation__item">Loadery</a></li>
+                        <li><a href="../pluginy/" class="navigation__item">Pluginy</a></li>
+                        <li><a href="../webpack-nastroje/" class="navigation__item navigation__item--active">Webpack nástroje</a></li>
+                    </ul>
+                </nav>
+                <main class="article-layout__content">
+                    <h1 class="heading-primary u-mb-6">Webpack nástroje</h1>
+                    <p class="paragraph u-mb-4">Tato stránka obsahuje dva nástroje, které při používání Webpacku pravděpodobně použijete. Jedná se o webpack-merge a webpack-dev-server.</p>
+                    <h2 class="heading-secondary u-mb-2">Sloučení konfiguračních souborů</h2>
+                    <p class="paragraph u-mb-2">Pokud chceme sloučit dva konfigurační soubory do jedné konfigurace, tak k tomu můžeme použít nástroj jménem webpack-merge. Můžeme si tak jednodušeji vytvořit konfigurační soubor pro vývoj a produkci. Nástroj webpack-merge můžeme nainstalovat jako jakýkoliv jiný NPM balíček.</p>
+                    <pre class="code-box u-mb-2"><code>npm install --save-dev webpack-merge</code></pre>
+                    <p class="paragraph u-mb-2">Balíček webpack-merge nám poskytuje funkci merge, které můžeme předat více konfiguračních objektů pro jejich sloučení dohromady.</p>
+                    <pre class="code-box u-mb-4"><code>const { merge } = require("webpack-merge");
+const commonConfig = require("./webpack.common");
+
+module.exports = merge(commonConfig, {
+    entry: "./index.js",
+    output: {
+        filename: "index.js",
+        path: path.resolve(__dirname, "dist"),
+        clean: true
+    }
+});</code></pre>
+                    <h2 class="heading-secondary u-mb-2">Dev Server</h2>
+                    <p class="paragraph u-mb-2">Při vývoji nechceme naši aplikaci po každé změně manuálně sestavovat. Proto si můžeme nainstalovat Dev Server, který se o to postará za nás. Další výhoda je ta, že pokud provedeme změny v našem CSS nebo JavaScript kódu, tak se aplikace v prohlížeči automaticky aktualizuje bez toho, aniž bychom museli manuálně obnovovat stránku. Dev Server můžeme nainstalovat pomocí následujícího příkazu:</p>
+                    <pre class="code-box u-mb-2"><code>npm install --save-dev webpack-dev-server</code></pre>
+                    <p class="paragraph u-mb-2">Po instalaci si můžeme Dev Server nakonfigurovat prostřednictvím vlastnosti devServer. Nastavíme kterou složku chceme servírovat a na jakém portu. Více možností můžete najít v <a href="https://webpack.js.org/configuration/dev-server/" target="_blank" class="link">dokumentaci</a>.</p>
+                    <pre class="code-box u-mb-2"><code>module.exports = {
+    /* ... */
+    devServer: {
+        static: "./dist",
+        port: 3000
+    }
+}</code></pre>
+                    <p class="paragraph u-mb-2">Aby se nám Dev Server spustil, tak musíme použít příkaz "webpack serve". Pokud navíc chceme aby se nám aplikace automaticky otevřela v prohlížeči, tak můžeme na konec napsat možnost "--open".</p>
+                    <pre class="code-box code-box--command"><code>webpack serve --config webpack.dev.js --mode development --open</code></pre>
+                </main>
+            </div>
+        </div>
+        <footer class="footer"><p>Tento web vytvořil <a href="https://jirkasa.github.io/" target="_blank" class="link link--light">Jiří Satora</a></p></footer>
+    </div>
+</body>
+</html>
