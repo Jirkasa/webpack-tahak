@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=yes maximum-scale=2.2 minimum-scale=1.0">
+
+    <script src="../../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <title>Pluginy | Webpack Tahák</title>
+</head>
+<body>
+    <div class="page">
+        <div id="header-container" class="header-container">
+            <header id="header" class="header">
+                <div class="header__content">
+                    <a href="../../" class="header__title">Webpack Tahák</a>
+                    <div class="header__navigation">
+                        <a href="../../tutorial/co-je-to-webpack/" class="header-link">Tutoriál</a>
+                        <a href="../../tahak/vstupni-soubory/" class="header-link header-link--active">Tahák</a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="article-layout">
+            <div class="article-layout__container">
+                <nav class="article-layout__sidebar">
+                    <ul class="navigation">
+                        <li><a href="../vstupni-soubory/" class="navigation__item">Vstupní soubory</a></li>
+                        <li><a href="../vystup/" class="navigation__item">Výstup</a></li>
+                        <li><a href="../loadery/" class="navigation__item">Loadery</a></li>
+                        <li><a href="../pluginy/" class="navigation__item navigation__item--active">Pluginy</a></li>
+                    </ul>
+                </nav>
+                <main class="article-layout__content">
+                    <h1 class="heading-primary u-mb-6">Pluginy</h1>
+                    <p class="paragraph u-mb-4">Zatímco loadery slouží k zpracování/přeměně různých typů souborů (modulů), pluginy lze využít k provádění širší škály úkolů jako je optimalizace, asset management, a tak podobně.</p>
+                    <h2 class="heading-secondary u-mb-2">Konfigurace pluginů</h2>
+                    <p class="paragraph u-mb-2">Pluginy používáme tak, že si je naimportujeme do našeho konfiguračního souboru, vytvoříme jejich instanci a tu vložíme do konfiguračního objektu do pole plugins (až na nějaké vyjímky, které se používají jinde). Většina pluginů je nastavitelná, takže si při vytváření jejich instancí můžeme plugin různě nastavit.</p>
+                    <pre class="code-box u-mb-4"><code>const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+module.exports = {
+    /* ... */
+    plugins: [
+        new MiniCssExtractPlugin(),
+        new HtmlWebpackPlugin({
+            template: "./index.html",
+            inject: true
+        })
+    ]
+}</code></pre>
+                    <h2 class="heading-secondary u-mb-2">Seznam pluginů</h2>
+                    <p class="paragraph u-mb-2">Zde jsem vytvořil seznam pluginů, které by se vám možná mohli hodit. Určitě se ale nejedná o kompletní list. Kdokoliv si totiž může vytvořit svůj vlastní plugin. Já jsem tu vypsal hlavně ty, které jsou zmíněné v <a href="https://webpack.js.org/plugins/" target="_blank" class="link">dokumentaci</a>.</p>
+                    <ul class="list">
+                        <li><b><a href="https://webpack.js.org/plugins/banner-plugin/" target="_blank" class="link">BannerPlugin</a></b> - Přidá banner ke každému vygenerovanému chunku.</li>
+                        <li><b><a href="https://www.npmjs.com/package/webpack-bundle-analyzer" target="_blank" class="link">BundleAnalyzerPlugin</a></b> - Umožňuje nám analyzovat, jestli se nám ve výstupních souborech neduplikuje kód. (obsahuje interaktivní mapu, která se nám otevře v prohlížeči)</li>
+                        <li><b><a href="https://webpack.js.org/plugins/copy-webpack-plugin/" target="_blank" class="link">CopyWebpackPlugin</a></b> - Kopíruje samostatné soubory nebo celé složky do složky se sestavenou aplikací.</li>
+                        <li><b><a href="https://github.com/webpack-contrib/css-minimizer-webpack-plugin" target="_blank" class="link">CssMinimizerPlugin</a></b> - Zminifikuje CSS soubory.</li>
+                        <li><b><a href="https://webpack.js.org/plugins/define-plugin/" target="_blank" class="link">DefinePlugin</a></b> - Umožňuje definovat globální konstanty, které budou v našem kódu k dispozici.</li>
+                        <li><b><a href="https://webpack.js.org/plugins/environment-plugin/" target="_blank" class="link">EnvironmentPlugin</a></b> - Zkratka pro používání DefinePluginu s process.env proměnnými.</li>
+                        <li><b><a href="https://webpack.js.org/plugins/eslint-webpack-plugin/" target="_blank" class="link">EslintWebpackPlugin</a></b> - ESLint Webpack plugin.</li>
+                        <li><b><a href="https://webpack.js.org/plugins/hot-module-replacement-plugin/" target="_blank" class="link">HotModuleReplacementPlugin</a></b> - Zapíná Hot Module Replacement.</li>
+                        <li><b><a href="https://webpack.js.org/plugins/html-webpack-plugin/" target="_blank" class="link">HtmlWebpackPlugin</a></b> - Vytváří HTML soubory.</li>
+                        <li><b><a href="https://webpack.js.org/plugins/mini-css-extract-plugin/" target="_blank" class="link">MiniCssExtractPlugin</a></b> - Vytváří CSS soubory.</li>
+                        <li><b><a href="https://webpack.js.org/plugins/install-webpack-plugin/" target="_blank" class="link">NpmInstallWebpackPlugin</a></b> - Automaticky instaluje a ukládá dependencies, které nám při vývoji chybějí.</li>
+                        <li><b><a href="https://webpack.js.org/plugins/progress-plugin/" target="_blank" class="link">ProgressPlugin</a></b> - Umožňuje nám přizpůsobit si, jak je hlášen pokrok při kompilaci.</li>
+                        <li><b><a href="https://webpack.js.org/plugins/provide-plugin/" target="_blank" class="link">ProvidePlugin</a></b> - Umožňuje nám používat moduly bez jejich importování. Může se to hodit pro nějaké starší knihovny.</li>
+                        <li><b><a href="https://purgecss.com/plugins/webpack.html" target="_blank" class="link">PurgecssPlugin</a></b> - Odstraní nepoužité CSS styly.</li>
+                        <li><b><a href="https://webpack.js.org/plugins/terser-webpack-plugin/" target="_blank" class="link">TerserPlugin</a></b> - Umožňuje minifikovat JavaScript. (Webpack 5 jej má již v sobě)</li>
+                    </ul>
+                </main>
+            </div>
+        </div>
+        <footer class="footer"><p>Tento web vytvořil <a href="https://jirkasa.github.io/" target="_blank" class="link link--light">Jiří Satora</a></p></footer>
+    </div>
+</body>
+</html>

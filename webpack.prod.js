@@ -24,3 +24,4 @@ module.exports = merge(commonConfig, {
         new MiniCssExtractPlugin()
     ]
 });
+// todo - ještě to minifikovat, použít PurgeCSS, atd.
