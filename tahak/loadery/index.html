@@ -37,7 +37,7 @@
                 <main class="article-layout__content">
                     <h1 class="heading-primary u-mb-6">Loadery</h1>
                     <p class="paragraph u-mb-4">V základu Webpack rozumí pouze JavaScriptu a JSON souborům. Podporu pro zpracování jiných typů souborů si můžeme přidat prostřednictvím loaderů.</p>
-                    <h2 class="heading-secondary u-mb-2">Konfigurace loaderů</h2>
+                    <h2 id="konfigurace-loaderu" class="heading-secondary u-mb-2">Konfigurace loaderů</h2>
                     <p class="paragraph u-mb-2">Loadery v konfiguračním objektu nastavujeme v části module v poli rules. V tomto poli pro různé typy souborů specifikujeme objekt a určujeme, které loadery se použijí. Tento objekt má vždy vlastnost test a use. Do vlastnosti test předáváme regex pro otestování názvu souboru (většinou jeho koncovky). Pokud test projde, tak se použijí loadery, které specifikujeme ve vlastnosti use.</p>
                     <p class="paragraph u-mb-2">Pokud chceme pro jeden typ souborů použít jen jeden loader, tak můžeme do vlastnosti use předat název loaderu pomocí řetězce (někdy i jinak, pokud například plugin poskytuje loader). Pokud chceme použít více loaderů, tak do vlastnosti use předáme pole loaderů. Loadery se postupně použijí od konce po začátek pole. V následující ukázce se tedy pro soubory s koncovkou .less spustí nejdříve less-loader, poté css-loader a nakonec style-loader.</p>
                     <pre class="code-box u-mb-2"><code>module.exports = {
@@ -77,9 +77,9 @@
         ]
     }
 }</code></pre>
-                    <h2 class="heading-secondary u-mb-2">Seznam loaderů</h2>
+                    <h2 id="seznam-loaderu" class="heading-secondary u-mb-2">Seznam loaderů</h2>
                     <p class="paragraph u-mb-2">Zde jsem vytvořil seznam loaderů, které by se vám třeba mohli hodit. Určitě se ale nejedná o kompletní list. Kdokoliv si totiž může napsat svůj vlastní loader. Já jsem tu vypsal hlavně ty, které jsou zmíněné v <a href="https://webpack.js.org/loaders/" target="_blank" class="link">dokumentaci</a>. S naprostou většinou z nich v době tvorby tohoto webu nemám ani žádné zkušenosti. U většiny z nich je budete muset pravděpodobně zkombinovat i s jiným loadery abyste dosáhli požadovaného výsledku. To si již vygooglíte nebo vyhledáte v dokumentaci. Ale myslím že tento seznam stejně moc používat nebudete a většinou si spíš přímo vygooglíte jak něco nakonfigurovat.</p>
-                    <h3 class="heading-tertiary u-mb-2">Šablonování</h3>
+                    <h3 id="sablonovani" class="heading-tertiary u-mb-2">Šablonování</h3>
                     <ul class="list u-mb-2">
                         <li><b><a href="https://webpack.js.org/loaders/html-loader" target="_blank" class="link">html-loader</a></b> - Slouží k exportování HTML souboru jako řetězce.</li>
                         <li><b><a href="https://github.com/pugjs/pug-loader" target="_blank" class="link">pug-loader</a></b> - Načte Pug a Jade šablony a vrátí funkci.</li>
@@ -89,7 +89,7 @@
                         <li><b><a href="https://github.com/zimmo-be/twig-loader" target="_blank" class="link">twig-loader</a></b> - Zkompiluje Twig šablony a vrátí funkci.</li>
                         <li>a další...</li>
                     </ul>
-                    <h3 class="heading-tertiary u-mb-2">Stylování</h3>
+                    <h3 id="stylovani" class="heading-tertiary u-mb-2">Stylování</h3>
                     <ul class="list u-mb-2">
                         <li><b><a href="https://webpack.js.org/loaders/style-loader/" target="_blank" class="link">style-loader</a></b> - Bere CSS z JavaScriptu a aplikuje jej na stránku.</li>
                         <li><b><a href="https://webpack.js.org/loaders/css-loader/" target="_blank" class="link">css-loader</a></b> - Bere CSS a kompiluje jej do JavaScriptu.</li>
@@ -99,7 +99,7 @@
                         <li><b><a href="https://webpack.js.org/loaders/stylus-loader/" target="_blank" class="link">stylus-loader</a></b> - Načte a zkompiluje Stylus soubory.</li>
                         <li>a další...</li>
                     </ul>
-                    <h3 class="heading-tertiary u-mb-2">Transpilace</h3>
+                    <h3 id="transpilace" class="heading-tertiary u-mb-2">Transpilace</h3>
                     <ul class="list">
                         <li><b><a href="https://webpack.js.org/loaders/babel-loader/" target="_blank" class="link">babel-loader</a></b> - Načte ES6+ kód a transpiluje jej do zpětně kompatibilní verze JavaScriptu za použití Babel.</li>
                         <li><b><a href="https://github.com/sairion/buble-loader" target="_blank" class="link">buble-loader</a></b> - Načte ES6+ kód a transpiluje jej do zpětně kompatibilní verze JavaScriptu za použití Bublé.</li>

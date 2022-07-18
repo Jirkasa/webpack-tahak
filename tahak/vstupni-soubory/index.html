@@ -37,7 +37,7 @@
                 <main class="article-layout__content">
                     <h1 class="heading-primary u-mb-6">Vstupní soubory</h1>
                     <p class="paragraph u-mb-4">Webpack náš kód začíná zpracovávat s nějakého vstupního souboru, popřípadě i více vstupních souborů. Definujeme je pomocí vlastnosti entry.</p>
-                    <h2 class="heading-secondary u-mb-2">Jeden vstupní soubor</h2>
+                    <h2 id="jeden-vstupni-soubor" class="heading-secondary u-mb-2">Jeden vstupní soubor</h2>
                     <p class="paragraph u-mb-2">Pokud máme jen jeden vstupní soubor, tak k němu můžeme vlastnosti entry předat cestu jako řetězec.</p>
                     <pre class="code-box u-mb-2"><code>module.exports = {
     entry: "./src/index.js"
@@ -52,7 +52,7 @@
                     <pre class="code-box u-mb-4"><code>module.exports = {
     entry: ["./src/1.js", "./src/2.js"]
 }</code></pre>
-                    <h2 class="heading-secondary u-mb-2">Více vstupních souborů</h2>
+                    <h2 id="vice-vstupnich-souboru" class="heading-secondary u-mb-2">Více vstupních souborů</h2>
                     <p class="paragraph u-mb-2">Pokud chceme definovat více vstupních souborů, tak musíme použít objektovou syntaxy. Následující konfigurace vygeneruje soubor main.js a app.js.</p>
                     <pre class="code-box u-mb-4"><code>module.exports = {
     entry: {
@@ -60,7 +60,7 @@
         app: "./src/application.js"
     }
 }</code></pre>
-                    <h2 class="heading-secondary u-mb-2">Nastavení vstupních souborů</h2>
+                    <h2 id="nastaveni-vstupnich-souboru" class="heading-secondary u-mb-2">Nastavení vstupních souborů</h2>
                     <p class="paragraph u-mb-2">Při definování vstupních souborů jim můžeme nastavit pár možností. Pokud je chceme nastavit, tak musíme vstupní soubor specifikovat následujícím způsobem:</p>
                     <pre class="code-box u-mb-2"><code>module.exports = {
     entry: {

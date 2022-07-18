@@ -37,7 +37,7 @@
                 <main class="article-layout__content">
                     <h1 class="heading-primary u-mb-6">Pluginy</h1>
                     <p class="paragraph u-mb-4">Zatímco loadery slouží k zpracování/přeměně různých typů souborů (modulů), pluginy lze využít k provádění širší škály úkolů jako je optimalizace, asset management, a tak podobně.</p>
-                    <h2 class="heading-secondary u-mb-2">Konfigurace pluginů</h2>
+                    <h2 id="konfigurace-pluginu" class="heading-secondary u-mb-2">Konfigurace pluginů</h2>
                     <p class="paragraph u-mb-2">Pluginy používáme tak, že si je naimportujeme do našeho konfiguračního souboru, vytvoříme jejich instanci a tu vložíme do konfiguračního objektu do pole plugins (až na nějaké vyjímky, které se používají jinde). Většina pluginů je nastavitelná, takže si při vytváření jejich instancí můžeme plugin různě nastavit.</p>
                     <pre class="code-box u-mb-4"><code>const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -52,7 +52,7 @@ module.exports = {
         })
     ]
 }</code></pre>
-                    <h2 class="heading-secondary u-mb-2">Seznam pluginů</h2>
+                    <h2 id="seznam-pluginu" class="heading-secondary u-mb-2">Seznam pluginů</h2>
                     <p class="paragraph u-mb-2">Zde jsem vytvořil seznam pluginů, které by se vám možná mohli hodit. Určitě se ale nejedná o kompletní list. Kdokoliv si totiž může vytvořit svůj vlastní plugin. Já jsem tu vypsal hlavně ty, které jsou zmíněné v <a href="https://webpack.js.org/plugins/" target="_blank" class="link">dokumentaci</a>.</p>
                     <ul class="list">
                         <li><b><a href="https://webpack.js.org/plugins/banner-plugin/" target="_blank" class="link">BannerPlugin</a></b> - Přidá banner ke každému vygenerovanému chunku.</li>

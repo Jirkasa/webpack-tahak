@@ -47,7 +47,7 @@
                             <span>Stáhnout startovní kód</span>
                         </a>
                     </div>
-                    <h2 class="heading-secondary u-mb-2">Vytvoření HTML souboru</h2>
+                    <h2 id="vytvoreni-html-souboru" class="heading-secondary u-mb-2">Vytvoření HTML souboru</h2>
                     <p class="paragraph u-mb-2">K vytvoření HTML souboru v dist složce použijeme plugin jménem HtmlWebpackPlugin. Můžeme jej nainstalovat následujícím příkazem:</p>
                     <pre class="code-box code-box--command u-mb-2"><code>npm install --save-dev html-webpack-plugin</code></pre>
                     <p class="paragraph u-mb-2">Po instalaci můžeme HtmlWebpackPlugin použít. Přidáme jej do pole v části plugins, kde jej nakonfigurujeme. HtmlWebpackPlugin můžeme použít i víc než jednou. Třeba pro více souborů. Proto vytváříme jeho instanci.</p>
@@ -151,7 +151,7 @@ module.exports = {
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
                     <p class="paragraph u-mb-4">Pokud spustíme Webpack, tak by se nám v dist složce měl vytvořit HTML soubor. Pokud si jej otevřete v prohlížeči, tak by aplikace měla fungovat, akorát obrázek se nepodaří načíst.</p>
-                    <h2 class="heading-secondary u-mb-2">Kopírování obrázků</h2>
+                    <h2 id="kopirovani-obrazku" class="heading-secondary u-mb-2">Kopírování obrázků</h2>
                     <p class="paragraph u-mb-2">Ke kopírování obrázků do dist složky použijeme plugin jménem copy-webpack-plugin. Použijeme jej na obrázky, ale můžeme s jeho pomocí kopírovat i jiné typy souborů. Nainstalujeme jej následujícím příkazem:</p>
                     <pre class="code-box u-mb-2"><code>npm install --save-dev copy-webpack-plugin</code></pre>
                     <p class="paragraph u-mb-2">CopyPlugin v naší konfiguraci můžeme přidat do pole v části plugins. Tam si vytvoříme jeho instanci a nastavíme si jej. Do vlastnosti patterns předáváme pole objektů, kde vždy každý objekt určuje, co se má odkud kam kopírovat. Kopírujeme všechny soubory ze složky assets/img do složky dist. Překopíruje se i struktura složek, takže nám v dist složce vznikne složka assets a v ní složka img s obrázkem.</p>

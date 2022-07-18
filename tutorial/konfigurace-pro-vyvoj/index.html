@@ -47,7 +47,7 @@
                             <span>Stáhnout startovní kód</span>
                         </a>
                     </div>
-                    <h2 class="heading-secondary u-mb-2">Rozdělení konfigurace do dvou souborů</h2>
+                    <h2 id="rozdeleni-konfigurace-do-dvou-souboru" class="heading-secondary u-mb-2">Rozdělení konfigurace do dvou souborů</h2>
                     <p class="paragraph u-mb-2">Mohli bychom si sice pro vývoj vytvořit konfigurační soubor úplně od začátku, ale můžeme využít toho, že některé věci budou společné pro produkci i pro vývoj. Proto si naši aktuální konfiguraci rozdělíme na dva soubory tak, aby nastavení, která budou použita i pro vývoj, byla v samostatném souboru.</p>
                     <p class="paragraph u-mb-2">Nejprve si vytvoříme soubor webpack.common.js, do kterého ze souboru webpack.config.js přesuneme části konfigurace, které jsou společné i pro vývoj.</p>
                     <pre class="code-box u-mb-2"><code>const path = require("path");
@@ -189,7 +189,7 @@ module.exports = merge(commonConfig, {
 });</code></pre>
                     <p class="paragraph u-mb-2">Pokud si aplikaci zkusíte sestavit, vše by mělo fungovat jako předtím. Akorát jsme tedy změnili název konfigurační souboru na webpack.prod.js, takže to musíme změnit i ve skriptu v package.json.</p>
                     <pre class="code-box u-mb-4"><code>"build": "webpack --config webpack.prod.js --mode production"</code></pre>
-                    <h2 class="heading-secondary u-mb-2">Konfigurační soubor pro vývoj</h2>
+                    <h2 id="konfiguracni-soubor-pro-vyvoj" class="heading-secondary u-mb-2">Konfigurační soubor pro vývoj</h2>
                     <p class="paragraph u-mb-2">Části konfigurace, které jsou společné pro vývoj i produkci jsme přesunuli do samostatného souboru. Můžeme tedy vytvořit konfigurační soubor pro vývoj. Můžeme jej nazvat třeba jako webpack.dev.js. Zatím bude obsahovat jen loadery pro CSS a LESS soubory, ale narozdíl od konfiguraci pro produkci se budou styly kompilovat do JavaScriptu aby to bylo rychlejší.</p>
                     <pre class="code-box u-mb-2"><code>const { merge } = require("webpack-merge");
 const commonConfig = require("./webpack.common");
@@ -211,7 +211,7 @@ module.exports = merge(commonConfig, {
                     <p class="paragraph u-mb-2">K sestavení aplikace pro vývoj si musíme v package.json vytvořit nový skript. Budeme Webpack spouštět s konfiguračním souborem webpack.dev.js v módu pro vývoj. Tento skript můžeme nazvat třeba jako "dev".</p>
                     <pre class="code-box u-mb-2"><code>"dev": "webpack --config webpack.dev.js --mode development"</code></pre>
                     <p class="paragraph u-mb-4">Pokud skript spustíme příkazem "npm run dev", tak by se nám aplikace měla sestavit.</p>
-                    <h2 class="heading-secondary u-mb-2">Dev Server</h2>
+                    <h2 id="dev-server" class="heading-secondary u-mb-2">Dev Server</h2>
                     <p class="paragraph u-mb-2">I když sestavení pro vývoj trvá kratší dobu, tak není moc komfortní po každé změně psát "npm run dev" aby se nám aplikace sestavila. Proto si můžeme nainstalovat Dev Server, který se o to postará za nás. Nainstalujeme jej tímto příkazem:</p>
                     <pre class="code-box u-mb-2"><code>npm install --save-dev webpack-dev-server</code></pre>
                     <p class="paragraph u-mb-2">Po instalaci si můžeme Dev Server nakonfigurovat v konfiguračním souboru pro vývoj prostřednictvím vlastnosti devServer. Nastavíme kterou složku chceme servírovat a na jakém portu.</p>
@@ -247,7 +247,7 @@ module.exports = merge(commonConfig, {
                             <span>Stáhnout finální kód</span>
                         </a>
                     </div>
-                    <h2 class="heading-secondary u-mb-2">Závěr</h2>
+                    <h2 id="zaver" class="heading-secondary u-mb-2">Závěr</h2>
                     <p class="paragraph u-mb-2">V tomto tutoriálu jste si zkusili s Webpackem pracovat a přidat jej do již existující aplikace, kterou jsem pro tento tutoriál vytvořil. Nyní byste měli být připraveni Webpack používat ve svých vlastních projektech. Možná vám může připadat, že i po dokončení tohoto tutoriálu toho o Webpacku moc nevíte a necítíte se na to jej používat. To je v pořádku, myslím že to tak má spoustu lidí. Webpack není něco co byste měli umět nazpaměť, je to hlavně o tom umět si vygooglovat nebo si najít v dokumentaci, jak něco nakonfigurovat. Ze začátku pro vás práce s Webpackem možná nebude nic jednoduchého, ale až si jej trochu osaháte, tak se to zlepší. Na konec vám přeji, abyste si při konfiguraci Webpacku nerozbili klávesnici nebo myš až jej budete používat ve vlastních projektech.</p>
                     <div class="gif-container">
                         <div style="width:100%;height:0;padding-bottom:74%;position:relative;"><iframe src="https://giphy.com/embed/14pUUmCj9ysy6A" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/giphyqa-14pUUmCj9ysy6A">via GIPHY</a></p>

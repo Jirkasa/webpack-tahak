@@ -37,7 +37,7 @@
                 <main class="article-layout__content">
                     <h1 class="heading-primary u-mb-6">Webpack nástroje</h1>
                     <p class="paragraph u-mb-4">Tato stránka obsahuje dva nástroje, které při používání Webpacku pravděpodobně použijete. Jedná se o webpack-merge a webpack-dev-server.</p>
-                    <h2 class="heading-secondary u-mb-2">Sloučení konfiguračních souborů</h2>
+                    <h2 id="slouceni-konfiguracnich-souboru" class="heading-secondary u-mb-2">Sloučení konfiguračních souborů</h2>
                     <p class="paragraph u-mb-2">Pokud chceme sloučit dva konfigurační soubory do jedné konfigurace, tak k tomu můžeme použít nástroj jménem webpack-merge. Můžeme si tak jednodušeji vytvořit konfigurační soubor pro vývoj a produkci. Nástroj webpack-merge můžeme nainstalovat jako jakýkoliv jiný NPM balíček.</p>
                     <pre class="code-box u-mb-2"><code>npm install --save-dev webpack-merge</code></pre>
                     <p class="paragraph u-mb-2">Balíček webpack-merge nám poskytuje funkci merge, které můžeme předat více konfiguračních objektů pro jejich sloučení dohromady.</p>
@@ -52,7 +52,7 @@ module.exports = merge(commonConfig, {
         clean: true
     }
 });</code></pre>
-                    <h2 class="heading-secondary u-mb-2">Dev Server</h2>
+                    <h2 id="dev-server" class="heading-secondary u-mb-2">Dev Server</h2>
                     <p class="paragraph u-mb-2">Při vývoji nechceme naši aplikaci po každé změně manuálně sestavovat. Proto si můžeme nainstalovat Dev Server, který se o to postará za nás. Další výhoda je ta, že pokud provedeme změny v našem CSS nebo JavaScript kódu, tak se aplikace v prohlížeči automaticky aktualizuje bez toho, aniž bychom museli manuálně obnovovat stránku. Dev Server můžeme nainstalovat pomocí následujícího příkazu:</p>
                     <pre class="code-box u-mb-2"><code>npm install --save-dev webpack-dev-server</code></pre>
                     <p class="paragraph u-mb-2">Po instalaci si můžeme Dev Server nakonfigurovat prostřednictvím vlastnosti devServer. Nastavíme kterou složku chceme servírovat a na jakém portu. Více možností můžete najít v <a href="https://webpack.js.org/configuration/dev-server/" target="_blank" class="link">dokumentaci</a>.</p>

@@ -47,7 +47,7 @@
                             <span>Stáhnout startovní kód</span>
                         </a>
                     </div>
-                    <h2 class="heading-secondary u-mb-2">Vytvoření konfiguračního souboru</h2>
+                    <h2 id="vytvoreni-konfiguracniho-souboru" class="heading-secondary u-mb-2">Vytvoření konfiguračního souboru</h2>
                     <p class="paragraph u-mb-2">Pro konfiguraci Webpacku potřebujeme konfigurační soubor, který Webpacku při jeho spuštění předáme. Webpack sice funguje i bez konfiguračního souboru, ale bude mít nastavená defaultní nastavení, která se pro naprostou většinu projektů nehodí. Konfigurační soubor je JavaScript soubor, ve kterém exportujeme objekt, pomocí kterého Webpack konfigurujeme. Může mít jakýkoliv název, ale doporučoval bych jej pojmenovat tak, aby bylo jasné že se jedná o Webpack konfiguraci. Pro naši aplikaci si v kořenové složce vytvoříme soubor "webpack.config.js".</p>
                     <p class="paragraph u-mb-2">Soubor si můžeme otevřít a začít do něj psát konfiguraci Webpacku. Každý konfigurační soubor exportuje objekt, ve kterém Webpack konfigurujeme.</p>
                     <pre class="code-box u-mb-2"><code>module.exports = {
@@ -68,7 +68,7 @@ module.exports = {
         clean: true // složka se před umístěním výsledného souboru promaže
     }
 }</code></pre>
-                    <h2 class="heading-secondary u-mb-2">Spuštění Webpacku</h2>
+                    <h2 id="spusteni-webpacku" class="heading-secondary u-mb-2">Spuštění Webpacku</h2>
                     <p class="paragraph u-mb-2">Teď už bychom měli mít všechno nastavené tak, aby se náš JavaScript kód zpracoval a sjednotil do jednoho souboru. Můžeme tedy Webpack spustit. Na to si ale budeme muset v souboru package.json napsat skript. Takže si jej otevřeme a v části scripts napíšeme příkaz, pomocí kterého Webpack spustíme. Ten vidíte v následující ukázce.</p>
                     <pre class="code-box u-mb-2"><code>{
     "name": "webpack-app",

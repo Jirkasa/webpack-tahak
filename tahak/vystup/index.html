@@ -38,7 +38,7 @@
                     <h1 class="heading-primary u-mb-6">Výstup</h1>
                     <p class="paragraph u-mb-2">Pomocí vlastnosti output můžeme nastavovat, jak bude Webpack psát výsledné soubory na disk. Vlastnosti output předáváme objekt, kde nastavujeme různé věci týkající se výstupu.</p>
                     <p class="paragraph u-mb-4">Na této stránce najdete jen nejčastěji používaná nastavení. Všechna nastavení najdete v <a href="https://webpack.js.org/configuration/output/" target="_blank" class="link">dokumentaci</a>.</p>
-                    <h2 class="heading-secondary u-mb-2">Cesta ke složce</h2>
+                    <h2 id="cesta-ke-slozce" class="heading-secondary u-mb-2">Cesta ke složce</h2>
                     <p class="paragraph u-mb-2">Složku, kam Webpack umístí výsledné soubory, můžeme nastavit pomocí možnosti path, kde předáme absolutní cestu ke složce.</p>
                     <pre class="code-box u-mb-4"><code>const path = require("path");
 
@@ -48,7 +48,7 @@ module.exports = {
         path: path.resolve(__dirname, "dist")
     }
 }</code></pre>
-                    <h2 class="heading-secondary u-mb-2">Automatické vyčistění složky</h2>
+                    <h2 id="automaticke-vycisteni-slozky" class="heading-secondary u-mb-2">Automatické vyčistění složky</h2>
                     <p class="paragraph u-mb-2">Pokud chceme před každém umístěním výsledných souborů promazat složku, tak můžeme nastavit možnost clean na true.</p>
                     <pre class="code-box u-mb-4"><code>const path = require("path");
 
@@ -59,7 +59,7 @@ module.exports = {
         clean: true
     }
 }</code></pre>
-                    <h2 class="heading-secondary u-mb-2">Název výsledných souborů</h2>
+                    <h2 id="nazev-vyslednych-souboru" class="heading-secondary u-mb-2">Název výsledných souborů</h2>
                     <p class="paragraph u-mb-2">Pokud chceme nastavit název výsledných souborů, tak to můžeme udělat pomocí možnosti filename. Pokud máme jen jeden vstupní soubor, můžeme této možnosti předat obyčejný řetězec představující název výsledného souboru, jak ukazuje následující ukázka.</p>
                     <pre class="code-box u-mb-2"><code>module.exports = {
     /* ... */
