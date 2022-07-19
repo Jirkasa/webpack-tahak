@@ -1,74 +1,6 @@
-<!DOCTYPE html>
-<html lang="cs">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=2.2, minimum-scale=1.0">
-
-    <script src="../../assets/js/highlight.min.js"></script>
-    <script>hljs.highlightAll();</script>
-
-    <meta name="description" content="Konfigurace Webpacku pro zpracování CSS stylů.">
-    <meta name="author" content="Jiří Satora">
-
-    <link rel="icon" type="image/svg+xml" href="../../assets/img/favicon.svg">
-
-    <title>Tutoriál - Zpracování CSS stylů | Webpack Tahák</title>
-</head>
-<body>
-    <div class="page">
-        <div id="header-container" class="header-container">
-            <header id="header" class="header">
-                <div class="header__content">
-                    <a href="../../" class="header__title">Webpack Tahák</a>
-                    <input type="checkbox" id="header-nav" class="header__navigation-checkbox toggle-button-checkbox">
-                    <div class="header__navigation">
-                        <a href="../co-je-to-webpack/" class="header-link header-link--active">Tutoriál</a>
-                        <a href="../../tahak/vstupni-soubory/" class="header-link">Tahák</a>
-                    </div>
-                    <label for="header-nav" class="toggle-button">
-                        <div class="toggle-button__icon"></div>
-                    </label>
-                </div>
-            </header>
-        </div>
-        <div class="article-layout">
-            <div class="article-layout__container">
-                <input type="checkbox" id="side-nav" class="article-layout__sidebar-checkbox nav-button-checkbox">
-                <nav class="article-layout__sidebar">
-                    <ul class="navigation">
-                        <li><a href="../co-je-to-webpack/" class="navigation__item">Co je to Webpack</a></li>
-                        <li><a href="../instalace/" class="navigation__item">Instalace</a></li>
-                        <li><a href="../zabaleni-javascriptu/" class="navigation__item">Zabalení JavaScriptu</a></li>
-                        <li><a href="../zpracovani-css-stylu/" class="navigation__item navigation__item--active">Zpracování CSS stylů</a></li>
-                        <li><a href="../html-soubor-a-obrazky/" class="navigation__item">HTML soubor a obrázky</a></li>
-                        <li><a href="../konfigurace-pro-vyvoj/" class="navigation__item">Konfigurace pro vývoj</a></li>
-                    </ul>
-                    <label for="side-nav" class="nav-button">
-                        <svg>
-                            <use xlink:href="../../assets/img/icon-sprite.svg#icon-arrow_forward_ios"></use>
-                        </svg>
-                    </label>
-                </nav>
-                <main class="article-layout__content">
-                    <h1 class="heading-primary u-mb-6">Zpracování CSS stylů</h1>
-                    <p class="paragraph u-mb-2">V minulé části jsme začali s konfigurací Webpacku a zabalili jsme si náš JavaScript kód. V této části si naši konfiguraci rozšíříme o zpracování souborů s CSS styly.</p>
-                    <p class="paragraph u-mb-2">Pokud z nějakého důvodu nemáte kód z minulé části, tak si můžete stáhnout startovní kód pro tuto část. Po stažení nezapomeňte nainstalovat balíčky pomocí příkazu "npm install".</p>
-                    <div class="u-center-text u-mb-4">
-                        <a href="../../assets/webpack-tutorial-app-codes/webpack-app-starter-code-3.zip" download class="button-secondary">
-                            <svg>
-                                <use xlink:href="../../assets/img/icon-sprite.svg#icon-file_download"></use>
-                            </svg>
-                            <span>Stáhnout startovní kód</span>
-                        </a>
-                    </div>
-                    <h2 id="importovani-css-a-less-souboru" class="heading-secondary u-mb-2">Importování CSS a LESS souboru</h2>
-                    <p class="paragraph u-mb-2">O našich CSS a LESS souborech musíme dát Webpacku nějakým způsobem vědět. Webpack začíná náš kód zpracovávat souborem index.js ve složce assets/js. Kromě JS modulů můžeme pro Webpack v JavaScriptu importovat i jiné soubory jako jsou CSS styly, obrázky a podobně. Když na ně Webpack narazí, tak je také zpracuje. V základu ale Webpack rozumí jen JavaScriptu a JSON souborům, takže bez žádné další konfigurace se mu jiné soubory zpracovat nepovede. Budeme k tomu potřebovat nainstalovat loadery, ale tím se budeme zabývat později. Teď si zatím naimportujeme naše styly do JavaScriptu. A než to patlat do našeho JavaScript kódu, tak si na to v kořenové složce vytvoříme nový JavaScript soubor, který bude sloužit k naimportování různých věcí. Můžeme jej nazvat také třeba index.js. Do tohoto souboru naimportujeme náš JavaScript kód a stejným způsobem i CSS a LESS soubor. CSS soubor, který budeme importovat se nachází ve složce assets/css a jmenuje se header.css. LESS soubor se nachází ve složce less a jmenuje se main.less. Soubor main.less slouží k naimportování ostatních LESS souborů do jednoho.</p>
-                    <pre class="code-box u-mb-2"><code>import './assets/js/index.js';
+<!doctype html><html lang="cs"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes,maximum-scale=2.2,minimum-scale=1"><script src="../../assets/js/highlight.min.js"></script><script>hljs.highlightAll();</script><meta name="description" content="Konfigurace Webpacku pro zpracování CSS stylů."><meta name="author" content="Jiří Satora"><link rel="icon" type="image/svg+xml" href="../../assets/img/favicon.svg"><title>Tutoriál - Zpracování CSS stylů | Webpack Tahák</title><script defer="defer" src="../../main.js"></script><link href="../../main.css" rel="stylesheet"></head><body><div class="page"><div id="header-container" class="header-container"><header id="header" class="header"><div class="header__content"><a href="../../" class="header__title">Webpack Tahák</a> <input type="checkbox" id="header-nav" class="header__navigation-checkbox toggle-button-checkbox"><div class="header__navigation"><a href="../co-je-to-webpack/" class="header-link header-link--active">Tutoriál</a> <a href="../../tahak/vstupni-soubory/" class="header-link">Tahák</a></div><label for="header-nav" class="toggle-button"><div class="toggle-button__icon"></div></label></div></header></div><div class="article-layout"><div class="article-layout__container"><input type="checkbox" id="side-nav" class="article-layout__sidebar-checkbox nav-button-checkbox"><nav class="article-layout__sidebar"><ul class="navigation"><li><a href="../co-je-to-webpack/" class="navigation__item">Co je to Webpack</a></li><li><a href="../instalace/" class="navigation__item">Instalace</a></li><li><a href="../zabaleni-javascriptu/" class="navigation__item">Zabalení JavaScriptu</a></li><li><a href="../zpracovani-css-stylu/" class="navigation__item navigation__item--active">Zpracování CSS stylů</a></li><li><a href="../html-soubor-a-obrazky/" class="navigation__item">HTML soubor a obrázky</a></li><li><a href="../konfigurace-pro-vyvoj/" class="navigation__item">Konfigurace pro vývoj</a></li></ul><label for="side-nav" class="nav-button"><svg><use xlink:href="../../assets/img/icon-sprite.svg#icon-arrow_forward_ios"></use></svg></label></nav><main class="article-layout__content"><h1 class="heading-primary u-mb-6">Zpracování CSS stylů</h1><p class="paragraph u-mb-2">V minulé části jsme začali s konfigurací Webpacku a zabalili jsme si náš JavaScript kód. V této části si naši konfiguraci rozšíříme o zpracování souborů s CSS styly.</p><p class="paragraph u-mb-2">Pokud z nějakého důvodu nemáte kód z minulé části, tak si můžete stáhnout startovní kód pro tuto část. Po stažení nezapomeňte nainstalovat balíčky pomocí příkazu "npm install".</p><div class="u-center-text u-mb-4"><a href="../../assets/webpack-tutorial-app-codes/webpack-app-starter-code-3.zip" download class="button-secondary"><svg><use xlink:href="../../assets/img/icon-sprite.svg#icon-file_download"></use></svg> <span>Stáhnout startovní kód</span></a></div><h2 id="importovani-css-a-less-souboru" class="heading-secondary u-mb-2">Importování CSS a LESS souboru</h2><p class="paragraph u-mb-2">O našich CSS a LESS souborech musíme dát Webpacku nějakým způsobem vědět. Webpack začíná náš kód zpracovávat souborem index.js ve složce assets/js. Kromě JS modulů můžeme pro Webpack v JavaScriptu importovat i jiné soubory jako jsou CSS styly, obrázky a podobně. Když na ně Webpack narazí, tak je také zpracuje. V základu ale Webpack rozumí jen JavaScriptu a JSON souborům, takže bez žádné další konfigurace se mu jiné soubory zpracovat nepovede. Budeme k tomu potřebovat nainstalovat loadery, ale tím se budeme zabývat později. Teď si zatím naimportujeme naše styly do JavaScriptu. A než to patlat do našeho JavaScript kódu, tak si na to v kořenové složce vytvoříme nový JavaScript soubor, který bude sloužit k naimportování různých věcí. Můžeme jej nazvat také třeba index.js. Do tohoto souboru naimportujeme náš JavaScript kód a stejným způsobem i CSS a LESS soubor. CSS soubor, který budeme importovat se nachází ve složce assets/css a jmenuje se header.css. LESS soubor se nachází ve složce less a jmenuje se main.less. Soubor main.less slouží k naimportování ostatních LESS souborů do jednoho.</p><pre class="code-box u-mb-2"><code>import './assets/js/index.js';
 import './assets/css/header.css';
-import './less/main.less';</code></pre>
-                    <p class="paragraph u-mb-2">Protože teď budeme chtít, aby Webpack začal náš kód zpracovávat naším nově vytvořeným souborem, tak to budeme muset nastavit v konfiguračním souboru.</p>
-                    <pre class="code-box u-mb-2"><code>const path = require("path");
+import './less/main.less';</code></pre><p class="paragraph u-mb-2">Protože teď budeme chtít, aby Webpack začal náš kód zpracovávat naším nově vytvořeným souborem, tak to budeme muset nastavit v konfiguračním souboru.</p><pre class="code-box u-mb-2"><code>const path = require("path");
 
 module.exports = {
     entry: "./index.js",
@@ -77,14 +9,7 @@ module.exports = {
         path: path.resolve(__dirname, "dist"),
         clean: true
     }
-}</code></pre>
-                    <p class="paragraph u-mb-4">Protože budeme ze začátku načítat CSS styly prostřednictvím JavaScriptu a až poté pro ně v dist složce vytvoříme vlastní soubor, tak ještě v HTML souboru odstraňte odkazy na CSS styly a ujistěte se, že když aplikaci spustíte, uvidíte nenastylovanou stránku.</p>
-                    <h2 id="konfigurace-loaderu" class="heading-secondary u-mb-2">Konfigurace Loaderů</h2>
-                    <p class="paragraph u-mb-2">Když si Webpack zkusíte spustit prostřednictvím build skriptu, který jsme si vytvořili v minulé části (npm run build), tak vám to vyhodí chybu. Webpack totiž neví jak zpracovat soubory, které ve vstupním JavaScript souboru importujeme. V základu rozumí jen JavaScript (a JSON souborům). Pokud chceme zpracovávat i jiné typy souborů, tak si na to musíme nainstalovat a nakonfigurovat loadery.</p>
-                    <p class="paragraph u-mb-2">Loadery které budeme potřebovat pro zpracování CSS a LESS souborů, jsou css-loader, style-loader a less-loader. Nainstalovat je můžeme jako jakékoliv jiné NPM balíčky.</p>
-                    <pre class="code-box u-mb-2"><code>npm install --save-dev css-loader style-loader less-loader</code></pre>
-                    <p class="paragraph u-mb-2">Po jejich instalaci je můžeme přidat do našeho konfiguračního souboru. Loadery přidáváme do pole, které nastavujeme jako hodnotu vlastnosti rules v objektu, který nastavujeme jako hodnotu pro vlastnost module. Lépe je to vidět v ukázce níže. Každá položka v poli rules je objekt, který má nakonfigurováno, které loadery se spustí pro jaký typ souboru.</p>
-                    <pre class="code-box u-mb-2"><code>const path = require("path");
+}</code></pre><p class="paragraph u-mb-4">Protože budeme ze začátku načítat CSS styly prostřednictvím JavaScriptu a až poté pro ně v dist složce vytvoříme vlastní soubor, tak ještě v HTML souboru odstraňte odkazy na CSS styly a ujistěte se, že když aplikaci spustíte, uvidíte nenastylovanou stránku.</p><h2 id="konfigurace-loaderu" class="heading-secondary u-mb-2">Konfigurace Loaderů</h2><p class="paragraph u-mb-2">Když si Webpack zkusíte spustit prostřednictvím build skriptu, který jsme si vytvořili v minulé části (npm run build), tak vám to vyhodí chybu. Webpack totiž neví jak zpracovat soubory, které ve vstupním JavaScript souboru importujeme. V základu rozumí jen JavaScript (a JSON souborům). Pokud chceme zpracovávat i jiné typy souborů, tak si na to musíme nainstalovat a nakonfigurovat loadery.</p><p class="paragraph u-mb-2">Loadery které budeme potřebovat pro zpracování CSS a LESS souborů, jsou css-loader, style-loader a less-loader. Nainstalovat je můžeme jako jakékoliv jiné NPM balíčky.</p><pre class="code-box u-mb-2"><code>npm install --save-dev css-loader style-loader less-loader</code></pre><p class="paragraph u-mb-2">Po jejich instalaci je můžeme přidat do našeho konfiguračního souboru. Loadery přidáváme do pole, které nastavujeme jako hodnotu vlastnosti rules v objektu, který nastavujeme jako hodnotu pro vlastnost module. Lépe je to vidět v ukázce níže. Každá položka v poli rules je objekt, který má nakonfigurováno, které loadery se spustí pro jaký typ souboru.</p><pre class="code-box u-mb-2"><code>const path = require("path");
 
 module.exports = {
     entry: "./index.js",
@@ -105,19 +30,7 @@ module.exports = {
             }
         ]
     }
-}</code></pre>
-                    <p class="paragraph u-mb-2">Je nutno podotknout, že loadery, které specifikujeme ve vlastnosti use se spouští od konce na začátek pole. Pro LESS soubory se tedy nejdříve spustí less-loader, poté css-loader a nakonec style-loader. Zde je popis co jednotlivé loadery dělají:</p>
-                    <ul class="list u-mb-2">
-                        <li><b>less-loader</b> - kompiluje LESS na CSS</li>
-                        <li><b>css-loader</b> - bere CSS a kompiluje jej do JavaScriptu</li>
-                        <li><b>style-loader</b> - bere CSS v JavaScriptu a aplikuje jej na stránku</li>
-                    </ul>
-                    <p class="paragraph u-mb-4">Asi si říkáte proč kompilujeme CSS do JavaScriptu. Pro produkci je to samozřejmě nesmysl, ale pro vývoj je to lepší, protože je to rychlejší. Později budeme mít jeden konfigurační soubor pro vývoj a druhý pro produkci. V konfiguraci pro vývoj budeme takto kompilovat CSS do JavaScriptu a v konfigurace pro produkci budeme vytvářet CSS soubor. Chtěl jsem vám ale již teď ukázat, jak kompilaci CSS stylů do JavaScriptu provést. Zachvíli to změníme a budeme pro styly vytvářet samostatný CSS soubor. Když si teď spustíte Webpack pomocí příkazu "npm run build", tak budou styly obsaženy v JavaScript souboru. Když aplikaci v prohlížeči otevřete, stránka by měla být nastylovaná.</p>
-                    <h2 id="vytvoreni-samostatneho-css-souboru" class="heading-secondary u-mb-2">Vytvoření samostatného CSS souboru</h2>
-                    <p class="paragraph u-mb-2">Kompilovat CSS do JavaScriptu je pro produkci nesmysl. Proto teď naši konfiguraci loaderů trochu upravíme. Namísto style-loaderu, který aplikuje CSS v JavaScriptu na stránku, použijeme MiniCssExtractPlugin. Nejedná se o loader, ale o plugin, který obsahuje loader. Pluginy lze využít k provádění širší škály úkolů jako je optimalizace, asset management, a tak podobně. MiniCssExtractPlugin vytáhne styly z JavaScriptu, které tam zkompiloval css-loader a vytvoří pro ně samostatný CSS soubor. Můžeme jej nainstalovat následujícím příkazem.</p>
-                    <pre class="code-box u-mb-2"><code>npm install --save-dev mini-css-extract-plugin</code></pre>
-                    <p class="paragraph u-mb-2">Do našeho konfiguračního souboru si MiniCssExtractPlugin naimportujeme a použijeme jej. Pluginy přidáváme do pole, které předáváme vlastnosti plugins. Jeden plugin můžeme použít i vícekrát, proto je potřeba vytvořit instanci pluginu. MiniCssExtractPlugin obsahuje také loader, takže ten je potřeba také použít. Jak se plugin používá si vždy můžete najít někde v dokumentaci. Následující ukázka ukazuje předělaný konfigurační soubor.</p>
-                    <pre class="code-box u-mb-2"><code>const path = require("path");
+}</code></pre><p class="paragraph u-mb-2">Je nutno podotknout, že loadery, které specifikujeme ve vlastnosti use se spouští od konce na začátek pole. Pro LESS soubory se tedy nejdříve spustí less-loader, poté css-loader a nakonec style-loader. Zde je popis co jednotlivé loadery dělají:</p><ul class="list u-mb-2"><li><b>less-loader</b> - kompiluje LESS na CSS</li><li><b>css-loader</b> - bere CSS a kompiluje jej do JavaScriptu</li><li><b>style-loader</b> - bere CSS v JavaScriptu a aplikuje jej na stránku</li></ul><p class="paragraph u-mb-4">Asi si říkáte proč kompilujeme CSS do JavaScriptu. Pro produkci je to samozřejmě nesmysl, ale pro vývoj je to lepší, protože je to rychlejší. Později budeme mít jeden konfigurační soubor pro vývoj a druhý pro produkci. V konfiguraci pro vývoj budeme takto kompilovat CSS do JavaScriptu a v konfigurace pro produkci budeme vytvářet CSS soubor. Chtěl jsem vám ale již teď ukázat, jak kompilaci CSS stylů do JavaScriptu provést. Zachvíli to změníme a budeme pro styly vytvářet samostatný CSS soubor. Když si teď spustíte Webpack pomocí příkazu "npm run build", tak budou styly obsaženy v JavaScript souboru. Když aplikaci v prohlížeči otevřete, stránka by měla být nastylovaná.</p><h2 id="vytvoreni-samostatneho-css-souboru" class="heading-secondary u-mb-2">Vytvoření samostatného CSS souboru</h2><p class="paragraph u-mb-2">Kompilovat CSS do JavaScriptu je pro produkci nesmysl. Proto teď naši konfiguraci loaderů trochu upravíme. Namísto style-loaderu, který aplikuje CSS v JavaScriptu na stránku, použijeme MiniCssExtractPlugin. Nejedná se o loader, ale o plugin, který obsahuje loader. Pluginy lze využít k provádění širší škály úkolů jako je optimalizace, asset management, a tak podobně. MiniCssExtractPlugin vytáhne styly z JavaScriptu, které tam zkompiloval css-loader a vytvoří pro ně samostatný CSS soubor. Můžeme jej nainstalovat následujícím příkazem.</p><pre class="code-box u-mb-2"><code>npm install --save-dev mini-css-extract-plugin</code></pre><p class="paragraph u-mb-2">Do našeho konfiguračního souboru si MiniCssExtractPlugin naimportujeme a použijeme jej. Pluginy přidáváme do pole, které předáváme vlastnosti plugins. Jeden plugin můžeme použít i vícekrát, proto je potřeba vytvořit instanci pluginu. MiniCssExtractPlugin obsahuje také loader, takže ten je potřeba také použít. Jak se plugin používá si vždy můžete najít někde v dokumentaci. Následující ukázka ukazuje předělaný konfigurační soubor.</p><pre class="code-box u-mb-2"><code>const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
@@ -142,30 +55,13 @@ module.exports = {
     plugins: [
         new MiniCssExtractPlugin()
     ]
-}</code></pre>
-                    <p class="paragraph u-mb-2">Když teď Webpack spustíme, tak se nám v dist složce vygeneruje samostatný CSS soubor nazvaný jako main.css. V JavaScriptu by již styly být obsaženy neměli. Když si aplikaci v prohlížeči zkusíte spustit, tak stránka nastylovaná nebude. Takže pokud chcete mít v aplikaci znova obsažené styly, musíte přidat odkaz na styly ve složce dist.</p>
-                    <pre class="code-box u-mb-4"><code>&lt;link rel="stylesheet" href="./dist/main.css"&gt;</code></pre>
-                    <h2 id="prefixnuti-novejsich-css-vlastnosti" class="heading-secondary u-mb-2">Prefixnutí novějších CSS vlastností</h2>
-                    <p class="paragraph u-mb-2">Pokud v našem CSS kódu používáme vlastnosti, které třeba některé prohlížeče zatím ještě úplně nepodporují, tak je můžeme prefixnout. Díky tomu se tedy použijí i v prohlížečích, které je zatím podporují jen experimentálně. Pokud nevíte co to prefixy jsou, tak tady je ukázka:</p>
-                    <pre class="code-box u-mb-2"><code>.trida {
+}</code></pre><p class="paragraph u-mb-2">Když teď Webpack spustíme, tak se nám v dist složce vygeneruje samostatný CSS soubor nazvaný jako main.css. V JavaScriptu by již styly být obsaženy neměli. Když si aplikaci v prohlížeči zkusíte spustit, tak stránka nastylovaná nebude. Takže pokud chcete mít v aplikaci znova obsažené styly, musíte přidat odkaz na styly ve složce dist.</p><pre class="code-box u-mb-4"><code>&lt;link rel="stylesheet" href="./dist/main.css"&gt;</code></pre><h2 id="prefixnuti-novejsich-css-vlastnosti" class="heading-secondary u-mb-2">Prefixnutí novějších CSS vlastností</h2><p class="paragraph u-mb-2">Pokud v našem CSS kódu používáme vlastnosti, které třeba některé prohlížeče zatím ještě úplně nepodporují, tak je můžeme prefixnout. Díky tomu se tedy použijí i v prohlížečích, které je zatím podporují jen experimentálně. Pokud nevíte co to prefixy jsou, tak tady je ukázka:</p><pre class="code-box u-mb-2"><code>.trida {
     -webkit-transition: all 1s linear;
     -moz-transition: all 1s linear;
     -ms-transition: all 1s linear;
     -o-transition: all 1s linear;
     transition: all 1s linear;
-}</code></pre>
-                    <p class="paragraph u-mb-2">Jak vidíte, prefixů je více a psát je ručně by byla otrava. Každý prohlížeč má jiný prefix.</p>
-                    <ul class="list u-mb-2">
-                        <li><b>-webkit-</b>: Chrome, Safari, iOS WebView, Android</li>
-                        <li><b>-moz-</b>: Firefox</li>
-                        <li><b>-ms-</b>: Edge, Internet Explorer</li>
-                        <li><b>-o-</b>: Opera</li>
-                    </ul>
-                    <p class="paragraph u-mb-2">Pro automatické prefixnutí novějších CSS vlastností můžeme použít postcss-loader. Jedná se o loader, který nám umožňuje zpracovat CSS s použitím PostCSS. Je takový nástroj, který nám umožňuje zpracovávat CSS prostřednictvím JavaScript pluginů a můžeme jej klidně použít i samostatně bez Webpacku.</p>
-                    <p class="paragraph u-mb-2">Abychom mohli postcss-loader použít, tak musíme nainstalovat také samotné PostCSS. K automatickému prefixnutí použijeme PostCSS plugin jménem "postcss-preset-env", takže ten si musíme také nainstalovat. Nainstalujeme si tedy tyto 3 balíčky: "postcss-loader", "postcss" a "postcss-preset-env".</p>
-                    <pre class="code-box u-mb-2"><code>npm install --save-dev postcss-loader postcss postcss-preset-env</code></pre>
-                    <p class="paragraph u-mb-2">Až se nám balíčky nainstalují, tak si postcss-loader můžeme přidat do naší konfigurace. Kam jej přidat a jak jej nastavit ukazuje následující ukázka. To si většinou najdete někde v dokumentaci. Většina konfigurace Webpacku je hlavně o googlování. Já jsem toto nastavení například zkopíroval z <a href="https://webpack.js.org/loaders/postcss-loader/" target="_blank" class="link">dokumentace</a>. Určitě to není tak, že to všechno mám v hlavě.</p>
-                    <pre class="code-box u-mb-2"><code>const path = require("path");
+}</code></pre><p class="paragraph u-mb-2">Jak vidíte, prefixů je více a psát je ručně by byla otrava. Každý prohlížeč má jiný prefix.</p><ul class="list u-mb-2"><li><b>-webkit-</b>: Chrome, Safari, iOS WebView, Android</li><li><b>-moz-</b>: Firefox</li><li><b>-ms-</b>: Edge, Internet Explorer</li><li><b>-o-</b>: Opera</li></ul><p class="paragraph u-mb-2">Pro automatické prefixnutí novějších CSS vlastností můžeme použít postcss-loader. Jedná se o loader, který nám umožňuje zpracovat CSS s použitím PostCSS. Je takový nástroj, který nám umožňuje zpracovávat CSS prostřednictvím JavaScript pluginů a můžeme jej klidně použít i samostatně bez Webpacku.</p><p class="paragraph u-mb-2">Abychom mohli postcss-loader použít, tak musíme nainstalovat také samotné PostCSS. K automatickému prefixnutí použijeme PostCSS plugin jménem "postcss-preset-env", takže ten si musíme také nainstalovat. Nainstalujeme si tedy tyto 3 balíčky: "postcss-loader", "postcss" a "postcss-preset-env".</p><pre class="code-box u-mb-2"><code>npm install --save-dev postcss-loader postcss postcss-preset-env</code></pre><p class="paragraph u-mb-2">Až se nám balíčky nainstalují, tak si postcss-loader můžeme přidat do naší konfigurace. Kam jej přidat a jak jej nastavit ukazuje následující ukázka. To si většinou najdete někde v dokumentaci. Většina konfigurace Webpacku je hlavně o googlování. Já jsem toto nastavení například zkopíroval z <a href="https://webpack.js.org/loaders/postcss-loader/" target="_blank" class="link">dokumentace</a>. Určitě to není tak, že to všechno mám v hlavě.</p><pre class="code-box u-mb-2"><code>const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
@@ -217,21 +113,13 @@ module.exports = {
     plugins: [
         new MiniCssExtractPlugin()
     ]
-}</code></pre>
-                    <p class="paragraph u-mb-2">Jak vidíte v předchozí ukázce, tak pokud chceme loader nějakým způsobem nastavit, předáme namísto obyčejného řetězce objekt. V tomto objektu můžeme pomocí vlastnosti options loader nějakým způsobem nastavit.</p>
-                    <p class="paragraph u-mb-2">Nyní můžeme Webpack spustit a ve vygenerovaném CSS kódu by mohli být nějaké CSS vlastnosti prefixnuté. V našem kódu ale nebude nic prefixnutého, protože ve stylech nepoužíváme nic nového nebo nestandardního. Když si ale styly zkusíte někde upravit a nastavíte třeba vlastnost user-select na none, tak by se tato vlastnost mohla prefixnout. Mě se prefixnula když jsem to zkoušel. Pokud ale tento tutoriál čtete někdy v daleké budoucnosti, mohlo se to trochu změnit a už se to prefixnout nemusí. Každopádně si třeba můžete zkusit ve složce assets/css otevřít soubor header.css a tuto vlastnost si do něj přidat.</p>
-                    <pre class="code-box u-mb-4"><code>.header {
+}</code></pre><p class="paragraph u-mb-2">Jak vidíte v předchozí ukázce, tak pokud chceme loader nějakým způsobem nastavit, předáme namísto obyčejného řetězce objekt. V tomto objektu můžeme pomocí vlastnosti options loader nějakým způsobem nastavit.</p><p class="paragraph u-mb-2">Nyní můžeme Webpack spustit a ve vygenerovaném CSS kódu by mohli být nějaké CSS vlastnosti prefixnuté. V našem kódu ale nebude nic prefixnutého, protože ve stylech nepoužíváme nic nového nebo nestandardního. Když si ale styly zkusíte někde upravit a nastavíte třeba vlastnost user-select na none, tak by se tato vlastnost mohla prefixnout. Mě se prefixnula když jsem to zkoušel. Pokud ale tento tutoriál čtete někdy v daleké budoucnosti, mohlo se to trochu změnit a už se to prefixnout nemusí. Každopádně si třeba můžete zkusit ve složce assets/css otevřít soubor header.css a tuto vlastnost si do něj přidat.</p><pre class="code-box u-mb-4"><code>.header {
     padding: .8rem;
     text-align: center;
     background-color: #357F8C;
 
     user-select: none;
-}</code></pre>
-                    <h2 id="zminifikovani-css-souboru" class="heading-secondary u-mb-2">Zminifikování CSS souboru</h2>
-                    <p class="paragraph u-mb-2">Poslední věc, kterou bychom mohli s našimi styly udělat, je minifikovat výsledný CSS soubor. K tomu využijeme plugin jménem CssMinimizerWebpackPlugin. Nainstalujeme jej pomocí následujícího příkazu:</p>
-                    <pre class="code-box u-mb-2"><code>npm install --save-dev css-minimizer-webpack-plugin</code></pre>
-                    <p class="paragraph u-mb-2">Poté co se nám CssMinimizerWebpackPlugin nainstaluje, tak jej můžeme použít. Používá se ale trochu jinak než jiné pluginy. To si můžete zjistit v <a href="https://webpack.js.org/plugins/css-minimizer-webpack-plugin/" target="_blank" class="link">dokumentaci</a>. Nastavíme jej v části optimization jako minimizer.</p>
-                    <pre class="code-box u-mb-2"><code>const path = require("path");
+}</code></pre><h2 id="zminifikovani-css-souboru" class="heading-secondary u-mb-2">Zminifikování CSS souboru</h2><p class="paragraph u-mb-2">Poslední věc, kterou bychom mohli s našimi styly udělat, je minifikovat výsledný CSS soubor. K tomu využijeme plugin jménem CssMinimizerWebpackPlugin. Nainstalujeme jej pomocí následujícího příkazu:</p><pre class="code-box u-mb-2"><code>npm install --save-dev css-minimizer-webpack-plugin</code></pre><p class="paragraph u-mb-2">Poté co se nám CssMinimizerWebpackPlugin nainstaluje, tak jej můžeme použít. Používá se ale trochu jinak než jiné pluginy. To si můžete zjistit v <a href="https://webpack.js.org/plugins/css-minimizer-webpack-plugin/" target="_blank" class="link">dokumentaci</a>. Nastavíme jej v části optimization jako minimizer.</p><pre class="code-box u-mb-2"><code>const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
@@ -290,17 +178,4 @@ module.exports = {
     plugins: [
         new MiniCssExtractPlugin()
     ]
-}</code></pre>
-                    <p class="paragraph u-mb-2">V předchozí ukázce můžete vidět, že do pole minimizer předáváme ještě řetězec `...`. To zajišťuje, aby se nepřepsal defaultní minimizer jménem TerserPlugin, který je ve Webpacku defaultně nastavený. Slouží pro minifikování JavaScriptu. Pokud bychom jej tedy přepsali, náš JavaScript kód by se nezminifikoval.</p>
-                    <p class="paragraph u-mb-2">Teď můžeme Webpack spustit a náš výsledný CSS soubor by měl být zminifikovaný.</p>
-                    <p class="paragraph u-mb-6">S konfigurací pro zpracování našich CSS stylů jsme hotovi. V příští části zařídíme, aby se nám do dist složky kopíroval také HTML soubor a obrázek.</p>
-                    <div class="u-center-text">
-                        <a href="../html-soubor-a-obrazky/" class="button"><span>pokračovat na další část</span></a>
-                    </div>
-                </main>
-            </div>
-        </div>
-        <footer class="footer"><p>Tento web vytvořil <a href="https://jirkasa.github.io/" target="_blank" class="link link--light">Jiří Satora</a></p></footer>
-    </div>
-</body>
-</html>
+}</code></pre><p class="paragraph u-mb-2">V předchozí ukázce můžete vidět, že do pole minimizer předáváme ještě řetězec `...`. To zajišťuje, aby se nepřepsal defaultní minimizer jménem TerserPlugin, který je ve Webpacku defaultně nastavený. Slouží pro minifikování JavaScriptu. Pokud bychom jej tedy přepsali, náš JavaScript kód by se nezminifikoval.</p><p class="paragraph u-mb-2">Teď můžeme Webpack spustit a náš výsledný CSS soubor by měl být zminifikovaný.</p><p class="paragraph u-mb-6">S konfigurací pro zpracování našich CSS stylů jsme hotovi. V příští části zařídíme, aby se nám do dist složky kopíroval také HTML soubor a obrázek.</p><div class="u-center-text"><a href="../html-soubor-a-obrazky/" class="button"><span>pokračovat na další část</span></a></div></main></div></div><footer class="footer"><p>Tento web vytvořil <a href="https://jirkasa.github.io/" target="_blank" class="link link--light">Jiří Satora</a></p></footer></div></body></html>

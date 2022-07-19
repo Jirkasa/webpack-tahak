@@ -1,71 +1,11 @@
-<!DOCTYPE html>
-<html lang="cs">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=2.2, minimum-scale=1.0">
-
-    <script src="../../assets/js/highlight.min.js"></script>
-    <script>hljs.highlightAll();</script>
-
-    <meta name="description" content="Webpack tahák pro výstup.">
-    <meta name="author" content="Jiří Satora">
-
-    <link rel="icon" type="image/svg+xml" href="../../assets/img/favicon.svg">
-
-    <title>Výstup | Webpack Tahák</title>
-</head>
-<body>
-    <div class="page">
-        <div id="header-container" class="header-container">
-            <header id="header" class="header">
-                <div class="header__content">
-                    <a href="../../" class="header__title">Webpack Tahák</a>
-                    <input type="checkbox" id="header-nav" class="header__navigation-checkbox toggle-button-checkbox">
-                    <div class="header__navigation">
-                        <a href="../../tutorial/co-je-to-webpack/" class="header-link">Tutoriál</a>
-                        <a href="../../tahak/vstupni-soubory/" class="header-link header-link--active">Tahák</a>
-                    </div>
-                    <label for="header-nav" class="toggle-button">
-                        <div class="toggle-button__icon"></div>
-                    </label>
-                </div>
-            </header>
-        </div>
-        <div class="article-layout">
-            <div class="article-layout__container">
-                <input type="checkbox" id="side-nav" class="article-layout__sidebar-checkbox nav-button-checkbox">
-                <nav class="article-layout__sidebar">
-                    <ul class="navigation">
-                        <li><a href="../vstupni-soubory/" class="navigation__item">Vstupní soubory</a></li>
-                        <li><a href="../vystup/" class="navigation__item navigation__item--active">Výstup</a></li>
-                        <li><a href="../loadery/" class="navigation__item">Loadery</a></li>
-                        <li><a href="../pluginy/" class="navigation__item">Pluginy</a></li>
-                        <li><a href="../webpack-nastroje/" class="navigation__item">Webpack nástroje</a></li>
-                    </ul>
-                    <label for="side-nav" class="nav-button">
-                        <svg>
-                            <use xlink:href="../../assets/img/icon-sprite.svg#icon-arrow_forward_ios"></use>
-                        </svg>
-                    </label>
-                </nav>
-                <main class="article-layout__content">
-                    <h1 class="heading-primary u-mb-6">Výstup</h1>
-                    <p class="paragraph u-mb-2">Pomocí vlastnosti output můžeme nastavovat, jak bude Webpack psát výsledné soubory na disk. Vlastnosti output předáváme objekt, kde nastavujeme různé věci týkající se výstupu.</p>
-                    <p class="paragraph u-mb-4">Na této stránce najdete jen nejčastěji používaná nastavení. Všechna nastavení najdete v <a href="https://webpack.js.org/configuration/output/" target="_blank" class="link">dokumentaci</a>.</p>
-                    <h2 id="cesta-ke-slozce" class="heading-secondary u-mb-2">Cesta ke složce</h2>
-                    <p class="paragraph u-mb-2">Složku, kam Webpack umístí výsledné soubory, můžeme nastavit pomocí možnosti path, kde předáme absolutní cestu ke složce.</p>
-                    <pre class="code-box u-mb-4"><code>const path = require("path");
+<!doctype html><html lang="cs"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes,maximum-scale=2.2,minimum-scale=1"><script src="../../assets/js/highlight.min.js"></script><script>hljs.highlightAll();</script><meta name="description" content="Webpack tahák pro výstup."><meta name="author" content="Jiří Satora"><link rel="icon" type="image/svg+xml" href="../../assets/img/favicon.svg"><title>Výstup | Webpack Tahák</title><script defer="defer" src="../../main.js"></script><link href="../../main.css" rel="stylesheet"></head><body><div class="page"><div id="header-container" class="header-container"><header id="header" class="header"><div class="header__content"><a href="../../" class="header__title">Webpack Tahák</a> <input type="checkbox" id="header-nav" class="header__navigation-checkbox toggle-button-checkbox"><div class="header__navigation"><a href="../../tutorial/co-je-to-webpack/" class="header-link">Tutoriál</a> <a href="../../tahak/vstupni-soubory/" class="header-link header-link--active">Tahák</a></div><label for="header-nav" class="toggle-button"><div class="toggle-button__icon"></div></label></div></header></div><div class="article-layout"><div class="article-layout__container"><input type="checkbox" id="side-nav" class="article-layout__sidebar-checkbox nav-button-checkbox"><nav class="article-layout__sidebar"><ul class="navigation"><li><a href="../vstupni-soubory/" class="navigation__item">Vstupní soubory</a></li><li><a href="../vystup/" class="navigation__item navigation__item--active">Výstup</a></li><li><a href="../loadery/" class="navigation__item">Loadery</a></li><li><a href="../pluginy/" class="navigation__item">Pluginy</a></li><li><a href="../webpack-nastroje/" class="navigation__item">Webpack nástroje</a></li></ul><label for="side-nav" class="nav-button"><svg><use xlink:href="../../assets/img/icon-sprite.svg#icon-arrow_forward_ios"></use></svg></label></nav><main class="article-layout__content"><h1 class="heading-primary u-mb-6">Výstup</h1><p class="paragraph u-mb-2">Pomocí vlastnosti output můžeme nastavovat, jak bude Webpack psát výsledné soubory na disk. Vlastnosti output předáváme objekt, kde nastavujeme různé věci týkající se výstupu.</p><p class="paragraph u-mb-4">Na této stránce najdete jen nejčastěji používaná nastavení. Všechna nastavení najdete v <a href="https://webpack.js.org/configuration/output/" target="_blank" class="link">dokumentaci</a>.</p><h2 id="cesta-ke-slozce" class="heading-secondary u-mb-2">Cesta ke složce</h2><p class="paragraph u-mb-2">Složku, kam Webpack umístí výsledné soubory, můžeme nastavit pomocí možnosti path, kde předáme absolutní cestu ke složce.</p><pre class="code-box u-mb-4"><code>const path = require("path");
 
 module.exports = {
     /* ... */
     output: {
         path: path.resolve(__dirname, "dist")
     }
-}</code></pre>
-                    <h2 id="automaticke-vycisteni-slozky" class="heading-secondary u-mb-2">Automatické vyčistění složky</h2>
-                    <p class="paragraph u-mb-2">Pokud chceme před každém umístěním výsledných souborů promazat složku, tak můžeme nastavit možnost clean na true.</p>
-                    <pre class="code-box u-mb-4"><code>const path = require("path");
+}</code></pre><h2 id="automaticke-vycisteni-slozky" class="heading-secondary u-mb-2">Automatické vyčistění složky</h2><p class="paragraph u-mb-2">Pokud chceme před každém umístěním výsledných souborů promazat složku, tak můžeme nastavit možnost clean na true.</p><pre class="code-box u-mb-4"><code>const path = require("path");
 
 module.exports = {
     /* ... */
@@ -73,34 +13,20 @@ module.exports = {
         path: path.resolve(__dirname, "dist"),
         clean: true
     }
-}</code></pre>
-                    <h2 id="nazev-vyslednych-souboru" class="heading-secondary u-mb-2">Název výsledných souborů</h2>
-                    <p class="paragraph u-mb-2">Pokud chceme nastavit název výsledných souborů, tak to můžeme udělat pomocí možnosti filename. Pokud máme jen jeden vstupní soubor, můžeme této možnosti předat obyčejný řetězec představující název výsledného souboru, jak ukazuje následující ukázka.</p>
-                    <pre class="code-box u-mb-2"><code>module.exports = {
+}</code></pre><h2 id="nazev-vyslednych-souboru" class="heading-secondary u-mb-2">Název výsledných souborů</h2><p class="paragraph u-mb-2">Pokud chceme nastavit název výsledných souborů, tak to můžeme udělat pomocí možnosti filename. Pokud máme jen jeden vstupní soubor, můžeme této možnosti předat obyčejný řetězec představující název výsledného souboru, jak ukazuje následující ukázka.</p><pre class="code-box u-mb-2"><code>module.exports = {
     /* ... */
     output: {
         filename: "bundle.js"
     }
-}</code></pre>
-                    <p class="paragraph u-mb-2">Pokud máme více výsledných souborů, tak od sebe musíme názvy výsledných souborů nějakým způsobem odlišit. To můžeme například udělat tak, že do názvu zahrneme název souboru, jak ukazuje následující ukázka.</p>
-                    <pre class="code-box u-mb-2"><code>module.exports = {
+}</code></pre><p class="paragraph u-mb-2">Pokud máme více výsledných souborů, tak od sebe musíme názvy výsledných souborů nějakým způsobem odlišit. To můžeme například udělat tak, že do názvu zahrneme název souboru, jak ukazuje následující ukázka.</p><pre class="code-box u-mb-2"><code>module.exports = {
     /* ... */
     output: {
         filename: "[name]-bundle.js"
     }
-}</code></pre>
-                    <p class="paragraph u-mb-2">Ještě se hodí zmínit, že můžeme do názvu souboru umístit hash, který se vytvoří podle obsahu souboru. Hodí se to pro produkci, abychom zabránili tomu, že uživatel bude mít v prohlížeči zacachovanou starou verzi souboru i když na serveru je k dispozici nová. Jak to nastavit ukazuje následující ukázka:</p>
-                    <pre class="code-box"><code>module.exports = {
+}</code></pre><p class="paragraph u-mb-2">Ještě se hodí zmínit, že můžeme do názvu souboru umístit hash, který se vytvoří podle obsahu souboru. Hodí se to pro produkci, abychom zabránili tomu, že uživatel bude mít v prohlížeči zacachovanou starou verzi souboru i když na serveru je k dispozici nová. Jak to nastavit ukazuje následující ukázka:</p><pre class="code-box"><code>module.exports = {
     /* ... */
     output: {
         filename: "[name].[contenthash].js"
     }
 }
-// název výsledného souboru bude například index.4d9993a9b28396ceee7c.js</code></pre>
-                </main>
-            </div>
-        </div>
-        <footer class="footer"><p>Tento web vytvořil <a href="https://jirkasa.github.io/" target="_blank" class="link link--light">Jiří Satora</a></p></footer>
-    </div>
-</body>
-</html>
+// název výsledného souboru bude například index.4d9993a9b28396ceee7c.js</code></pre></main></div></div><footer class="footer"><p>Tento web vytvořil <a href="https://jirkasa.github.io/" target="_blank" class="link link--light">Jiří Satora</a></p></footer></div></body></html>

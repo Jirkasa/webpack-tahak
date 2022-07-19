@@ -1,101 +1,24 @@
-<!DOCTYPE html>
-<html lang="cs">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=2.2, minimum-scale=1.0">
-
-    <script src="../../assets/js/highlight.min.js"></script>
-    <script>hljs.highlightAll();</script>
-
-    <meta name="description" content="Webpack tahák pro vstupní soubory.">
-    <meta name="author" content="Jiří Satora">
-
-    <link rel="icon" type="image/svg+xml" href="../../assets/img/favicon.svg">
-
-    <title>Vstupní soubory | Webpack Tahák</title>
-</head>
-<body>
-    <div class="page">
-        <div id="header-container" class="header-container">
-            <header id="header" class="header">
-                <div class="header__content">
-                    <a href="../../" class="header__title">Webpack Tahák</a>
-                    <input type="checkbox" id="header-nav" class="header__navigation-checkbox toggle-button-checkbox">
-                    <div class="header__navigation">
-                        <a href="../../tutorial/co-je-to-webpack/" class="header-link">Tutoriál</a>
-                        <a href="../../tahak/vstupni-soubory/" class="header-link header-link--active">Tahák</a>
-                    </div>
-                    <label for="header-nav" class="toggle-button">
-                        <div class="toggle-button__icon"></div>
-                    </label>
-                </div>
-            </header>
-        </div>
-        <div class="article-layout">
-            <div class="article-layout__container">
-                <input type="checkbox" id="side-nav" class="article-layout__sidebar-checkbox nav-button-checkbox">
-                <nav class="article-layout__sidebar">
-                    <ul class="navigation">
-                        <li><a href="../vstupni-soubory/" class="navigation__item navigation__item--active">Vstupní soubory</a></li>
-                        <li><a href="../vystup/" class="navigation__item">Výstup</a></li>
-                        <li><a href="../loadery/" class="navigation__item">Loadery</a></li>
-                        <li><a href="../pluginy/" class="navigation__item">Pluginy</a></li>
-                        <li><a href="../webpack-nastroje/" class="navigation__item">Webpack nástroje</a></li>
-                    </ul>
-                    <label for="side-nav" class="nav-button">
-                        <svg>
-                            <use xlink:href="../../assets/img/icon-sprite.svg#icon-arrow_forward_ios"></use>
-                        </svg>
-                    </label>
-                </nav>
-                <main class="article-layout__content">
-                    <h1 class="heading-primary u-mb-6">Vstupní soubory</h1>
-                    <p class="paragraph u-mb-4">Webpack náš kód začíná zpracovávat s nějakého vstupního souboru, popřípadě i více vstupních souborů. Definujeme je pomocí vlastnosti entry.</p>
-                    <h2 id="jeden-vstupni-soubor" class="heading-secondary u-mb-2">Jeden vstupní soubor</h2>
-                    <p class="paragraph u-mb-2">Pokud máme jen jeden vstupní soubor, tak k němu můžeme vlastnosti entry předat cestu jako řetězec.</p>
-                    <pre class="code-box u-mb-2"><code>module.exports = {
+<!doctype html><html lang="cs"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes,maximum-scale=2.2,minimum-scale=1"><script src="../../assets/js/highlight.min.js"></script><script>hljs.highlightAll();</script><meta name="description" content="Webpack tahák pro vstupní soubory."><meta name="author" content="Jiří Satora"><link rel="icon" type="image/svg+xml" href="../../assets/img/favicon.svg"><title>Vstupní soubory | Webpack Tahák</title><script defer="defer" src="../../main.js"></script><link href="../../main.css" rel="stylesheet"></head><body><div class="page"><div id="header-container" class="header-container"><header id="header" class="header"><div class="header__content"><a href="../../" class="header__title">Webpack Tahák</a> <input type="checkbox" id="header-nav" class="header__navigation-checkbox toggle-button-checkbox"><div class="header__navigation"><a href="../../tutorial/co-je-to-webpack/" class="header-link">Tutoriál</a> <a href="../../tahak/vstupni-soubory/" class="header-link header-link--active">Tahák</a></div><label for="header-nav" class="toggle-button"><div class="toggle-button__icon"></div></label></div></header></div><div class="article-layout"><div class="article-layout__container"><input type="checkbox" id="side-nav" class="article-layout__sidebar-checkbox nav-button-checkbox"><nav class="article-layout__sidebar"><ul class="navigation"><li><a href="../vstupni-soubory/" class="navigation__item navigation__item--active">Vstupní soubory</a></li><li><a href="../vystup/" class="navigation__item">Výstup</a></li><li><a href="../loadery/" class="navigation__item">Loadery</a></li><li><a href="../pluginy/" class="navigation__item">Pluginy</a></li><li><a href="../webpack-nastroje/" class="navigation__item">Webpack nástroje</a></li></ul><label for="side-nav" class="nav-button"><svg><use xlink:href="../../assets/img/icon-sprite.svg#icon-arrow_forward_ios"></use></svg></label></nav><main class="article-layout__content"><h1 class="heading-primary u-mb-6">Vstupní soubory</h1><p class="paragraph u-mb-4">Webpack náš kód začíná zpracovávat s nějakého vstupního souboru, popřípadě i více vstupních souborů. Definujeme je pomocí vlastnosti entry.</p><h2 id="jeden-vstupni-soubor" class="heading-secondary u-mb-2">Jeden vstupní soubor</h2><p class="paragraph u-mb-2">Pokud máme jen jeden vstupní soubor, tak k němu můžeme vlastnosti entry předat cestu jako řetězec.</p><pre class="code-box u-mb-2"><code>module.exports = {
     entry: "./src/index.js"
-}</code></pre>
-                    <p class="paragraph u-mb-2">Předchozí kód je zkratkou pro tuto syntaxy:</p>
-                    <pre class="code-box u-mb-2"><code>module.exports = {
+}</code></pre><p class="paragraph u-mb-2">Předchozí kód je zkratkou pro tuto syntaxy:</p><pre class="code-box u-mb-2"><code>module.exports = {
     entry: {
         main: "./src/index.js"
     }
-}</code></pre>
-                    <p class="paragraph u-mb-2">Pokud máme více samostatných souborů a chtěli bychom je sjednodit do jednoho, tak můžeme vlastnosti entry předat pole cest k těmto souborům.</p>
-                    <pre class="code-box u-mb-4"><code>module.exports = {
+}</code></pre><p class="paragraph u-mb-2">Pokud máme více samostatných souborů a chtěli bychom je sjednodit do jednoho, tak můžeme vlastnosti entry předat pole cest k těmto souborům.</p><pre class="code-box u-mb-4"><code>module.exports = {
     entry: ["./src/1.js", "./src/2.js"]
-}</code></pre>
-                    <h2 id="vice-vstupnich-souboru" class="heading-secondary u-mb-2">Více vstupních souborů</h2>
-                    <p class="paragraph u-mb-2">Pokud chceme definovat více vstupních souborů, tak musíme použít objektovou syntaxy. Následující konfigurace vygeneruje soubor main.js a app.js.</p>
-                    <pre class="code-box u-mb-4"><code>module.exports = {
+}</code></pre><h2 id="vice-vstupnich-souboru" class="heading-secondary u-mb-2">Více vstupních souborů</h2><p class="paragraph u-mb-2">Pokud chceme definovat více vstupních souborů, tak musíme použít objektovou syntaxy. Následující konfigurace vygeneruje soubor main.js a app.js.</p><pre class="code-box u-mb-4"><code>module.exports = {
     entry: {
         main: "./main.js",
         app: "./src/application.js"
     }
-}</code></pre>
-                    <h2 id="nastaveni-vstupnich-souboru" class="heading-secondary u-mb-2">Nastavení vstupních souborů</h2>
-                    <p class="paragraph u-mb-2">Při definování vstupních souborů jim můžeme nastavit pár možností. Pokud je chceme nastavit, tak musíme vstupní soubor specifikovat následujícím způsobem:</p>
-                    <pre class="code-box u-mb-2"><code>module.exports = {
+}</code></pre><h2 id="nastaveni-vstupnich-souboru" class="heading-secondary u-mb-2">Nastavení vstupních souborů</h2><p class="paragraph u-mb-2">Při definování vstupních souborů jim můžeme nastavit pár možností. Pokud je chceme nastavit, tak musíme vstupní soubor specifikovat následujícím způsobem:</p><pre class="code-box u-mb-2"><code>module.exports = {
     entry: {
         main: {
             import: "./src/index.js", // cesta ke vstupnímu souboru
             filename: "app.js" // výsledný soubor bude mít název app.js
         }
     }
-}</code></pre>
-                    <p class="paragraph u-mb-2">U vstupních souborů můžeme nastavit tyto možnosti:</p>
-                    <ul class="list u-mb-2">
-                        <li><b>dependOn</b> - Vstupní soubory, na kterých vstupní soubor závisí. Musejí být načteny před tímto vstupním souborem.</li>
-                        <li><b>filename</b> - Název výsledného souboru.</li>
-                        <li><b>import</b> - Cesta k vstupnímu souboru/souborům.</li>
-                        <li><b>library</b> - Tuto možnost můžeme použít, pokud děláme nějakou knihovnu. <a href="https://webpack.js.org/configuration/output/#outputlibrary" target="_blank" class="link">Více zde</a>.</li>
-                        <li><b>runtime</b> - Nevím k čemu toto nastavení slouží. <a href="https://webpack.js.org/concepts/entry-points/#entrydescription-object" target="_blank" class="link">Více v dokumentaci</a>.</li>
-                        <li><b>publicPath</b> - Nevím k čemu toto nastavení slouží. <a href="https://webpack.js.org/concepts/entry-points/#entrydescription-object" target="_blank" class="link">Více v dokumentaci</a>.</li>
-                    </ul>
-                    <p class="paragraph u-mb-2">U nastavení filename se hodí zmínit, že můžeme do názvu souboru umístit hash, který se vytvoří podle obsahu souboru. Hodí se to pro produkci, abychom zabránili tomu, že uživatel bude mít v prohlížeči zacachovanou starou verzi souboru i když na serveru je k dispozici nová. Následující ukázka ukazuje jak to nastavit:</p>
-                    <pre class="code-box"><code>module.exports = {
+}</code></pre><p class="paragraph u-mb-2">U vstupních souborů můžeme nastavit tyto možnosti:</p><ul class="list u-mb-2"><li><b>dependOn</b> - Vstupní soubory, na kterých vstupní soubor závisí. Musejí být načteny před tímto vstupním souborem.</li><li><b>filename</b> - Název výsledného souboru.</li><li><b>import</b> - Cesta k vstupnímu souboru/souborům.</li><li><b>library</b> - Tuto možnost můžeme použít, pokud děláme nějakou knihovnu. <a href="https://webpack.js.org/configuration/output/#outputlibrary" target="_blank" class="link">Více zde</a>.</li><li><b>runtime</b> - Nevím k čemu toto nastavení slouží. <a href="https://webpack.js.org/concepts/entry-points/#entrydescription-object" target="_blank" class="link">Více v dokumentaci</a>.</li><li><b>publicPath</b> - Nevím k čemu toto nastavení slouží. <a href="https://webpack.js.org/concepts/entry-points/#entrydescription-object" target="_blank" class="link">Více v dokumentaci</a>.</li></ul><p class="paragraph u-mb-2">U nastavení filename se hodí zmínit, že můžeme do názvu souboru umístit hash, který se vytvoří podle obsahu souboru. Hodí se to pro produkci, abychom zabránili tomu, že uživatel bude mít v prohlížeči zacachovanou starou verzi souboru i když na serveru je k dispozici nová. Následující ukázka ukazuje jak to nastavit:</p><pre class="code-box"><code>module.exports = {
     entry: {
         main: {
             import: "./src/index.js",
@@ -103,11 +26,4 @@
         }
     }
 }
-// název výsledného souboru bude například index.4d9993a9b28396ceee7c.js</code></pre>
-                </main>
-            </div>
-        </div>
-        <footer class="footer"><p>Tento web vytvořil <a href="https://jirkasa.github.io/" target="_blank" class="link link--light">Jiří Satora</a></p></footer>
-    </div>
-</body>
-</html>
+// název výsledného souboru bude například index.4d9993a9b28396ceee7c.js</code></pre></main></div></div><footer class="footer"><p>Tento web vytvořil <a href="https://jirkasa.github.io/" target="_blank" class="link link--light">Jiří Satora</a></p></footer></div></body></html>

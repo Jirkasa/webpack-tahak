@@ -1,72 +1,4 @@
-<!DOCTYPE html>
-<html lang="cs">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=2.2, minimum-scale=1.0">
-
-    <script src="../../assets/js/highlight.min.js"></script>
-    <script>hljs.highlightAll();</script>
-
-    <meta name="description" content="Konfigurace Webpacku pro vytváření HTML souboru a kopírování obrázků.">
-    <meta name="author" content="Jiří Satora">
-
-    <link rel="icon" type="image/svg+xml" href="../../assets/img/favicon.svg">
-
-    <title>Tutoriál - HTML soubor a obrázky | Webpack Tahák</title>
-</head>
-<body>
-    <div class="page">
-        <div id="header-container" class="header-container">
-            <header id="header" class="header">
-                <div class="header__content">
-                    <a href="../../" class="header__title">Webpack Tahák</a>
-                    <input type="checkbox" id="header-nav" class="header__navigation-checkbox toggle-button-checkbox">
-                    <div class="header__navigation">
-                        <a href="../co-je-to-webpack/" class="header-link header-link--active">Tutoriál</a>
-                        <a href="../../tahak/vstupni-soubory/" class="header-link">Tahák</a>
-                    </div>
-                    <label for="header-nav" class="toggle-button">
-                        <div class="toggle-button__icon"></div>
-                    </label>
-                </div>
-            </header>
-        </div>
-        <div class="article-layout">
-            <div class="article-layout__container">
-                <input type="checkbox" id="side-nav" class="article-layout__sidebar-checkbox nav-button-checkbox">
-                <nav class="article-layout__sidebar">
-                    <ul class="navigation">
-                        <li><a href="../co-je-to-webpack/" class="navigation__item">Co je to Webpack</a></li>
-                        <li><a href="../instalace/" class="navigation__item">Instalace</a></li>
-                        <li><a href="../zabaleni-javascriptu/" class="navigation__item">Zabalení JavaScriptu</a></li>
-                        <li><a href="../zpracovani-css-stylu/" class="navigation__item">Zpracování CSS stylů</a></li>
-                        <li><a href="../html-soubor-a-obrazky/" class="navigation__item navigation__item--active">HTML soubor a obrázky</a></li>
-                        <li><a href="../konfigurace-pro-vyvoj/" class="navigation__item">Konfigurace pro vývoj</a></li>
-                    </ul>
-                    <label for="side-nav" class="nav-button">
-                        <svg>
-                            <use xlink:href="../../assets/img/icon-sprite.svg#icon-arrow_forward_ios"></use>
-                        </svg>
-                    </label>
-                </nav>
-                <main class="article-layout__content">
-                    <h1 class="heading-primary u-mb-6">HTML soubor a obrázky</h1>
-                    <p class="paragraph u-mb-2">V této části si nakonfigurujeme Webpack tak, aby nám do dist složky kopíroval i HTML soubor a obrázky. Poté již budeme mít naši aplikaci v podstatě nakonfigurovanou a budeme ji moci pomocí jednoho příkazu sestavit pro produkci.</p>
-                    <p class="paragraph u-mb-2">Pokud z nějakého důvodu nemáte kód z minulé části, tak si můžete stáhnout startovní kód pro tuto část. Po stažení nezapomeňte nainstalovat balíčky pomocí příkazu "npm install".</p>
-                    <div class="u-center-text u-mb-4">
-                        <a href="../../assets/webpack-tutorial-app-codes/webpack-app-starter-code-4.zip" download class="button-secondary">
-                            <svg>
-                                <use xlink:href="../../assets/img/icon-sprite.svg#icon-file_download"></use>
-                            </svg>
-                            <span>Stáhnout startovní kód</span>
-                        </a>
-                    </div>
-                    <h2 id="vytvoreni-html-souboru" class="heading-secondary u-mb-2">Vytvoření HTML souboru</h2>
-                    <p class="paragraph u-mb-2">K vytvoření HTML souboru v dist složce použijeme plugin jménem HtmlWebpackPlugin. Můžeme jej nainstalovat následujícím příkazem:</p>
-                    <pre class="code-box code-box--command u-mb-2"><code>npm install --save-dev html-webpack-plugin</code></pre>
-                    <p class="paragraph u-mb-2">Po instalaci můžeme HtmlWebpackPlugin použít. Přidáme jej do pole v části plugins, kde jej nakonfigurujeme. HtmlWebpackPlugin můžeme použít i víc než jednou. Třeba pro více souborů. Proto vytváříme jeho instanci.</p>
-                    <pre class="code-box u-mb-2"><code>const path = require("path");
+<!doctype html><html lang="cs"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes,maximum-scale=2.2,minimum-scale=1"><script src="../../assets/js/highlight.min.js"></script><script>hljs.highlightAll();</script><meta name="description" content="Konfigurace Webpacku pro vytváření HTML souboru a kopírování obrázků."><meta name="author" content="Jiří Satora"><link rel="icon" type="image/svg+xml" href="../../assets/img/favicon.svg"><title>Tutoriál - HTML soubor a obrázky | Webpack Tahák</title><script defer="defer" src="../../main.js"></script><link href="../../main.css" rel="stylesheet"></head><body><div class="page"><div id="header-container" class="header-container"><header id="header" class="header"><div class="header__content"><a href="../../" class="header__title">Webpack Tahák</a> <input type="checkbox" id="header-nav" class="header__navigation-checkbox toggle-button-checkbox"><div class="header__navigation"><a href="../co-je-to-webpack/" class="header-link header-link--active">Tutoriál</a> <a href="../../tahak/vstupni-soubory/" class="header-link">Tahák</a></div><label for="header-nav" class="toggle-button"><div class="toggle-button__icon"></div></label></div></header></div><div class="article-layout"><div class="article-layout__container"><input type="checkbox" id="side-nav" class="article-layout__sidebar-checkbox nav-button-checkbox"><nav class="article-layout__sidebar"><ul class="navigation"><li><a href="../co-je-to-webpack/" class="navigation__item">Co je to Webpack</a></li><li><a href="../instalace/" class="navigation__item">Instalace</a></li><li><a href="../zabaleni-javascriptu/" class="navigation__item">Zabalení JavaScriptu</a></li><li><a href="../zpracovani-css-stylu/" class="navigation__item">Zpracování CSS stylů</a></li><li><a href="../html-soubor-a-obrazky/" class="navigation__item navigation__item--active">HTML soubor a obrázky</a></li><li><a href="../konfigurace-pro-vyvoj/" class="navigation__item">Konfigurace pro vývoj</a></li></ul><label for="side-nav" class="nav-button"><svg><use xlink:href="../../assets/img/icon-sprite.svg#icon-arrow_forward_ios"></use></svg></label></nav><main class="article-layout__content"><h1 class="heading-primary u-mb-6">HTML soubor a obrázky</h1><p class="paragraph u-mb-2">V této části si nakonfigurujeme Webpack tak, aby nám do dist složky kopíroval i HTML soubor a obrázky. Poté již budeme mít naši aplikaci v podstatě nakonfigurovanou a budeme ji moci pomocí jednoho příkazu sestavit pro produkci.</p><p class="paragraph u-mb-2">Pokud z nějakého důvodu nemáte kód z minulé části, tak si můžete stáhnout startovní kód pro tuto část. Po stažení nezapomeňte nainstalovat balíčky pomocí příkazu "npm install".</p><div class="u-center-text u-mb-4"><a href="../../assets/webpack-tutorial-app-codes/webpack-app-starter-code-4.zip" download class="button-secondary"><svg><use xlink:href="../../assets/img/icon-sprite.svg#icon-file_download"></use></svg> <span>Stáhnout startovní kód</span></a></div><h2 id="vytvoreni-html-souboru" class="heading-secondary u-mb-2">Vytvoření HTML souboru</h2><p class="paragraph u-mb-2">K vytvoření HTML souboru v dist složce použijeme plugin jménem HtmlWebpackPlugin. Můžeme jej nainstalovat následujícím příkazem:</p><pre class="code-box code-box--command u-mb-2"><code>npm install --save-dev html-webpack-plugin</code></pre><p class="paragraph u-mb-2">Po instalaci můžeme HtmlWebpackPlugin použít. Přidáme jej do pole v části plugins, kde jej nakonfigurujeme. HtmlWebpackPlugin můžeme použít i víc než jednou. Třeba pro více souborů. Proto vytváříme jeho instanci.</p><pre class="code-box u-mb-2"><code>const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -129,9 +61,7 @@ module.exports = {
             template: "./index.html"
         })
     ]
-}</code></pre>
-                    <p class="paragraph u-mb-2">HtmlWebpackPlugin jsme nastavili tak, aby použil soubor index.html z naší kořenové složky. Mohli bychom toho nastavit ještě více. Například na jakém vstupním souboru je HTML soubor závislý. Protože ale máme jen jeden vstupní soubor, tak to ani nenastavujeme a automaticky se použije. Odkaz na CSS a JS soubory se do HTML souboru umístí automaticky, podle toho na kterém vstupním souboru je HTML soubor závislý. Můžeme z něj tedy tyto odkazy odstranit. Náš HTML soubor bude vypadat takto:</p>
-                    <pre class="code-box u-mb-2"><code>&lt;!DOCTYPE html&gt;
+}</code></pre><p class="paragraph u-mb-2">HtmlWebpackPlugin jsme nastavili tak, aby použil soubor index.html z naší kořenové složky. Mohli bychom toho nastavit ještě více. Například na jakém vstupním souboru je HTML soubor závislý. Protože ale máme jen jeden vstupní soubor, tak to ani nenastavujeme a automaticky se použije. Odkaz na CSS a JS soubory se do HTML souboru umístí automaticky, podle toho na kterém vstupním souboru je HTML soubor závislý. Můžeme z něj tedy tyto odkazy odstranit. Náš HTML soubor bude vypadat takto:</p><pre class="code-box u-mb-2"><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="cs"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
@@ -164,13 +94,7 @@ module.exports = {
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/body&gt;
-&lt;/html&gt;</code></pre>
-                    <p class="paragraph u-mb-4">Pokud spustíme Webpack, tak by se nám v dist složce měl vytvořit HTML soubor. Pokud si jej otevřete v prohlížeči, tak by aplikace měla fungovat, akorát obrázek se nepodaří načíst.</p>
-                    <h2 id="kopirovani-obrazku" class="heading-secondary u-mb-2">Kopírování obrázků</h2>
-                    <p class="paragraph u-mb-2">Ke kopírování obrázků do dist složky použijeme plugin jménem copy-webpack-plugin. Použijeme jej na obrázky, ale můžeme s jeho pomocí kopírovat i jiné typy souborů. Nainstalujeme jej následujícím příkazem:</p>
-                    <pre class="code-box u-mb-2"><code>npm install --save-dev copy-webpack-plugin</code></pre>
-                    <p class="paragraph u-mb-2">CopyPlugin v naší konfiguraci můžeme přidat do pole v části plugins. Tam si vytvoříme jeho instanci a nastavíme si jej. Do vlastnosti patterns předáváme pole objektů, kde vždy každý objekt určuje, co se má odkud kam kopírovat. Kopírujeme všechny soubory ze složky assets/img do složky dist. Překopíruje se i struktura složek, takže nám v dist složce vznikne složka assets a v ní složka img s obrázkem.</p>
-                    <pre class="code-box u-mb-2"><code>const path = require("path");
+&lt;/html&gt;</code></pre><p class="paragraph u-mb-4">Pokud spustíme Webpack, tak by se nám v dist složce měl vytvořit HTML soubor. Pokud si jej otevřete v prohlížeči, tak by aplikace měla fungovat, akorát obrázek se nepodaří načíst.</p><h2 id="kopirovani-obrazku" class="heading-secondary u-mb-2">Kopírování obrázků</h2><p class="paragraph u-mb-2">Ke kopírování obrázků do dist složky použijeme plugin jménem copy-webpack-plugin. Použijeme jej na obrázky, ale můžeme s jeho pomocí kopírovat i jiné typy souborů. Nainstalujeme jej následujícím příkazem:</p><pre class="code-box u-mb-2"><code>npm install --save-dev copy-webpack-plugin</code></pre><p class="paragraph u-mb-2">CopyPlugin v naší konfiguraci můžeme přidat do pole v části plugins. Tam si vytvoříme jeho instanci a nastavíme si jej. Do vlastnosti patterns předáváme pole objektů, kde vždy každý objekt určuje, co se má odkud kam kopírovat. Kopírujeme všechny soubory ze složky assets/img do složky dist. Překopíruje se i struktura složek, takže nám v dist složce vznikne složka assets a v ní složka img s obrázkem.</p><pre class="code-box u-mb-2"><code>const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -242,17 +166,4 @@ module.exports = {
             ]
         })
     ]
-}</code></pre>
-                    <p class="paragraph u-mb-2">Jak můžete v ukázce vidět, tak u cesty odkud se mají soubory kopírovat měníme pomocí metody replace znaky "\\" za znak "/". To je proto, aby to fungovalo ve Windowsu, jak jsem si našel v dokumentaci. Pokud máte jiný operační systém a háže vám to chybu nebo to nefunguje, tak zkuste volání této metody odstranit.</p>
-                    <p class="paragraph u-mb-2">Aplikaci teď můžeme sestavit pomocí našeho skriptu zavoláním "npm run build". Ve složce dist by se nám měla objevit složka assets obsahující složku img s obrázkem. Když si teď sestavenou aplikaci spustíte v prohlížeči, tak se již podaří načíst i obrázek.</p>
-                    <p class="paragraph u-mb-6">S konfigurací pro sestavení naší aplikace pro produkci jsme hotovi. Dost jsme ji optimalizovali. Sloučili jsme JavaScript kód do jednoho souboru, CSS kód také, naše styly jsme automaticky prefixnuly aby novější CSS vlastnosti fungovali i v prohlížečích, které je zatím podporují jen experimentálně a také jsme naše soubory zminifikovali, aby se načetli co nejrychleji. Pokud bychom ale na naší aplikaci chtěli dál pracovat, tak není moc komfortní vždy po nějaké změně psát "npm run build" a čekat až se aplikace sestaví. Proto si v příští části vytvoříme konfiguraci pro vývoj, kterou budeme používat, když budeme aplikaci vyvíjet.</p>
-                    <div class="u-center-text">
-                        <a href="../konfigurace-pro-vyvoj/" class="button"><span>pokračovat na další část</span></a>
-                    </div>
-                </main>
-            </div>
-        </div>
-        <footer class="footer"><p>Tento web vytvořil <a href="https://jirkasa.github.io/" target="_blank" class="link link--light">Jiří Satora</a></p></footer>
-    </div>
-</body>
-</html>
+}</code></pre><p class="paragraph u-mb-2">Jak můžete v ukázce vidět, tak u cesty odkud se mají soubory kopírovat měníme pomocí metody replace znaky "\\" za znak "/". To je proto, aby to fungovalo ve Windowsu, jak jsem si našel v dokumentaci. Pokud máte jiný operační systém a háže vám to chybu nebo to nefunguje, tak zkuste volání této metody odstranit.</p><p class="paragraph u-mb-2">Aplikaci teď můžeme sestavit pomocí našeho skriptu zavoláním "npm run build". Ve složce dist by se nám měla objevit složka assets obsahující složku img s obrázkem. Když si teď sestavenou aplikaci spustíte v prohlížeči, tak se již podaří načíst i obrázek.</p><p class="paragraph u-mb-6">S konfigurací pro sestavení naší aplikace pro produkci jsme hotovi. Dost jsme ji optimalizovali. Sloučili jsme JavaScript kód do jednoho souboru, CSS kód také, naše styly jsme automaticky prefixnuly aby novější CSS vlastnosti fungovali i v prohlížečích, které je zatím podporují jen experimentálně a také jsme naše soubory zminifikovali, aby se načetli co nejrychleji. Pokud bychom ale na naší aplikaci chtěli dál pracovat, tak není moc komfortní vždy po nějaké změně psát "npm run build" a čekat až se aplikace sestaví. Proto si v příští části vytvoříme konfiguraci pro vývoj, kterou budeme používat, když budeme aplikaci vyvíjet.</p><div class="u-center-text"><a href="../konfigurace-pro-vyvoj/" class="button"><span>pokračovat na další část</span></a></div></main></div></div><footer class="footer"><p>Tento web vytvořil <a href="https://jirkasa.github.io/" target="_blank" class="link link--light">Jiří Satora</a></p></footer></div></body></html>

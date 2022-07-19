@@ -1,80 +1,8 @@
-<!DOCTYPE html>
-<html lang="cs">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=2.2, minimum-scale=1.0">
-
-    <script src="../../assets/js/highlight.min.js"></script>
-    <script>hljs.highlightAll();</script>
-
-    <meta name="description" content="Vytvoření konfiguračního souboru pro Webpack a sloučení JavaScript kódu.">
-    <meta name="author" content="Jiří Satora">
-
-    <link rel="icon" type="image/svg+xml" href="../../assets/img/favicon.svg">
-
-    <title>Tutoriál - Zabalení JavaScriptu | Webpack Tahák</title>
-</head>
-<body>
-    <div class="page">
-        <div id="header-container" class="header-container">
-            <header id="header" class="header">
-                <div class="header__content">
-                    <a href="../../" class="header__title">Webpack Tahák</a>
-                    <input type="checkbox" id="header-nav" class="header__navigation-checkbox toggle-button-checkbox">
-                    <div class="header__navigation">
-                        <a href="../co-je-to-webpack/" class="header-link header-link--active">Tutoriál</a>
-                        <a href="../../tahak/vstupni-soubory/" class="header-link">Tahák</a>
-                    </div>
-                    <label for="header-nav" class="toggle-button">
-                        <div class="toggle-button__icon"></div>
-                    </label>
-                </div>
-            </header>
-        </div>
-        <div class="article-layout">
-            <div class="article-layout__container">
-                <input type="checkbox" id="side-nav" class="article-layout__sidebar-checkbox nav-button-checkbox">
-                <nav class="article-layout__sidebar">
-                    <ul class="navigation">
-                        <li><a href="../co-je-to-webpack/" class="navigation__item">Co je to Webpack</a></li>
-                        <li><a href="../instalace/" class="navigation__item">Instalace</a></li>
-                        <li><a href="../zabaleni-javascriptu/" class="navigation__item navigation__item--active">Zabalení JavaScriptu</a></li>
-                        <li><a href="../zpracovani-css-stylu/" class="navigation__item">Zpracování CSS stylů</a></li>
-                        <li><a href="../html-soubor-a-obrazky/" class="navigation__item">HTML soubor a obrázky</a></li>
-                        <li><a href="../konfigurace-pro-vyvoj/" class="navigation__item">Konfigurace pro vývoj</a></li>
-                    </ul>
-                    <label for="side-nav" class="nav-button">
-                        <svg>
-                            <use xlink:href="../../assets/img/icon-sprite.svg#icon-arrow_forward_ios"></use>
-                        </svg>
-                    </label>
-                </nav>
-                <main class="article-layout__content">
-                    <h1 class="heading-primary u-mb-6">Zabalení JavaScriptu</h1>
-                    <p class="paragraph u-mb-2">Z minulé části máme nainstalovaný Webpack. V této části se pustíme do vytváření prvního konfiguračního souboru a zabalíme si zatím jen náš JavaScript kód.</p>
-                    <p class="paragraph u-mb-2">Pokud z nějakého důvodu nemáte kód z minulé části, tak si můžete stáhnout startovní kód pro tuto část. Po jeho stažení si nainstalujte balíčky, které jsou specifikované v souboru package.json. To provedete příkazem "npm install". A pokud kód z minulé části máte, tak napište "npm install" také, protože je v souboru package.json kromě balíčků pro Webpack specifikovaný také balíček pro LESS preprocesor. V příštích částech až budeme zpracovávat styly jej budeme také potřebovat. Já jsem jej v projektu zatím používal jen k vytvoření CSS souboru ručně spuštěním skriptu "compile:less", který jsem si v package.json souboru napsal.</p>
-                    <div class="u-center-text u-mb-4">
-                        <a href="../../assets/webpack-tutorial-app-codes/webpack-app-starter-code-2.zip" download class="button-secondary">
-                            <svg>
-                                <use xlink:href="../../assets/img/icon-sprite.svg#icon-file_download"></use>
-                            </svg>
-                            <span>Stáhnout startovní kód</span>
-                        </a>
-                    </div>
-                    <h2 id="vytvoreni-konfiguracniho-souboru" class="heading-secondary u-mb-2">Vytvoření konfiguračního souboru</h2>
-                    <p class="paragraph u-mb-2">Pro konfiguraci Webpacku potřebujeme konfigurační soubor, který Webpacku při jeho spuštění předáme. Webpack sice funguje i bez konfiguračního souboru, ale bude mít nastavená defaultní nastavení, která se pro naprostou většinu projektů nehodí. Konfigurační soubor je JavaScript soubor, ve kterém exportujeme objekt, pomocí kterého Webpack konfigurujeme. Může mít jakýkoliv název, ale doporučoval bych jej pojmenovat tak, aby bylo jasné že se jedná o Webpack konfiguraci. Pro naši aplikaci si v kořenové složce vytvoříme soubor "webpack.config.js".</p>
-                    <p class="paragraph u-mb-2">Soubor si můžeme otevřít a začít do něj psát konfiguraci Webpacku. Každý konfigurační soubor exportuje objekt, ve kterém Webpack konfigurujeme.</p>
-                    <pre class="code-box u-mb-2"><code>module.exports = {
+<!doctype html><html lang="cs"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes,maximum-scale=2.2,minimum-scale=1"><script src="../../assets/js/highlight.min.js"></script><script>hljs.highlightAll();</script><meta name="description" content="Vytvoření konfiguračního souboru pro Webpack a sloučení JavaScript kódu."><meta name="author" content="Jiří Satora"><link rel="icon" type="image/svg+xml" href="../../assets/img/favicon.svg"><title>Tutoriál - Zabalení JavaScriptu | Webpack Tahák</title><script defer="defer" src="../../main.js"></script><link href="../../main.css" rel="stylesheet"></head><body><div class="page"><div id="header-container" class="header-container"><header id="header" class="header"><div class="header__content"><a href="../../" class="header__title">Webpack Tahák</a> <input type="checkbox" id="header-nav" class="header__navigation-checkbox toggle-button-checkbox"><div class="header__navigation"><a href="../co-je-to-webpack/" class="header-link header-link--active">Tutoriál</a> <a href="../../tahak/vstupni-soubory/" class="header-link">Tahák</a></div><label for="header-nav" class="toggle-button"><div class="toggle-button__icon"></div></label></div></header></div><div class="article-layout"><div class="article-layout__container"><input type="checkbox" id="side-nav" class="article-layout__sidebar-checkbox nav-button-checkbox"><nav class="article-layout__sidebar"><ul class="navigation"><li><a href="../co-je-to-webpack/" class="navigation__item">Co je to Webpack</a></li><li><a href="../instalace/" class="navigation__item">Instalace</a></li><li><a href="../zabaleni-javascriptu/" class="navigation__item navigation__item--active">Zabalení JavaScriptu</a></li><li><a href="../zpracovani-css-stylu/" class="navigation__item">Zpracování CSS stylů</a></li><li><a href="../html-soubor-a-obrazky/" class="navigation__item">HTML soubor a obrázky</a></li><li><a href="../konfigurace-pro-vyvoj/" class="navigation__item">Konfigurace pro vývoj</a></li></ul><label for="side-nav" class="nav-button"><svg><use xlink:href="../../assets/img/icon-sprite.svg#icon-arrow_forward_ios"></use></svg></label></nav><main class="article-layout__content"><h1 class="heading-primary u-mb-6">Zabalení JavaScriptu</h1><p class="paragraph u-mb-2">Z minulé části máme nainstalovaný Webpack. V této části se pustíme do vytváření prvního konfiguračního souboru a zabalíme si zatím jen náš JavaScript kód.</p><p class="paragraph u-mb-2">Pokud z nějakého důvodu nemáte kód z minulé části, tak si můžete stáhnout startovní kód pro tuto část. Po jeho stažení si nainstalujte balíčky, které jsou specifikované v souboru package.json. To provedete příkazem "npm install". A pokud kód z minulé části máte, tak napište "npm install" také, protože je v souboru package.json kromě balíčků pro Webpack specifikovaný také balíček pro LESS preprocesor. V příštích částech až budeme zpracovávat styly jej budeme také potřebovat. Já jsem jej v projektu zatím používal jen k vytvoření CSS souboru ručně spuštěním skriptu "compile:less", který jsem si v package.json souboru napsal.</p><div class="u-center-text u-mb-4"><a href="../../assets/webpack-tutorial-app-codes/webpack-app-starter-code-2.zip" download class="button-secondary"><svg><use xlink:href="../../assets/img/icon-sprite.svg#icon-file_download"></use></svg> <span>Stáhnout startovní kód</span></a></div><h2 id="vytvoreni-konfiguracniho-souboru" class="heading-secondary u-mb-2">Vytvoření konfiguračního souboru</h2><p class="paragraph u-mb-2">Pro konfiguraci Webpacku potřebujeme konfigurační soubor, který Webpacku při jeho spuštění předáme. Webpack sice funguje i bez konfiguračního souboru, ale bude mít nastavená defaultní nastavení, která se pro naprostou většinu projektů nehodí. Konfigurační soubor je JavaScript soubor, ve kterém exportujeme objekt, pomocí kterého Webpack konfigurujeme. Může mít jakýkoliv název, ale doporučoval bych jej pojmenovat tak, aby bylo jasné že se jedná o Webpack konfiguraci. Pro naši aplikaci si v kořenové složce vytvoříme soubor "webpack.config.js".</p><p class="paragraph u-mb-2">Soubor si můžeme otevřít a začít do něj psát konfiguraci Webpacku. Každý konfigurační soubor exportuje objekt, ve kterém Webpack konfigurujeme.</p><pre class="code-box u-mb-2"><code>module.exports = {
     // v tomto objektu Webpack nastavujeme
-}</code></pre>
-                    <p class="paragraph u-mb-2">Webpack začíná náš kód zpracovávat z nějakého vstupního souboru, který mu nastavíme. Pro nás je to soubor index.js ve složce assets/js. Vstupní soubor se nastavuje prostřednictvím vlastnosti "entry". Vstupních souborů můžeme nastavit i více, ale mi pro naši aplikaci máme jen jeden.</p>
-                    <pre class="code-box u-mb-2"><code>module.exports = {
+}</code></pre><p class="paragraph u-mb-2">Webpack začíná náš kód zpracovávat z nějakého vstupního souboru, který mu nastavíme. Pro nás je to soubor index.js ve složce assets/js. Vstupní soubor se nastavuje prostřednictvím vlastnosti "entry". Vstupních souborů můžeme nastavit i více, ale mi pro naši aplikaci máme jen jeden.</p><pre class="code-box u-mb-2"><code>module.exports = {
     entry: "./assets/js/index.js"
-}</code></pre>
-                    <p class="paragraph u-mb-2">Až Webpack spustíme, tak začne zpracovávat soubor index.js. Podívá se jestli se v něm neimportují nějaké moduly, které také rekurzivně zpracuje. Vytvoří si graf závislostí a sloučí JavaScript kód do jednoho souboru. A pokud Webpack spouštíme v produkčním módu, tak také provede tree shaking, což je technika pro odstranění kódu, který jsme nepoužili.</p>
-                    <p class="paragraph u-mb-2">Kromě vstupního souboru musíme také nastavit, kam se má umístit výsledný kód. To provedeme pomocí vlastnosti output, které jako hodnotu nastavíme objekt, kde specifikujeme absolutní cestu ke složce. Také můžeme nastavit pár dalších nastavení, jako je jméno výsledného souboru a tak dále. Mi si ještě zapneme nastavení clean, které zajistí, že se složka před umístěním výsledného souboru promaže. Cesta ke složce musí být absolutní, proto musíme pro její získání použít metodu resolve vestavěného NodeJS modulu jménem path. Jako parametr jí předáme cestu ke složce ve které se nachází konfigurační soubor (__dirname) a složku "dist". Složka "dist" ani nemusí existovat, automaticky se vytvoří.</p>
-                    <pre class="code-box u-mb-4"><code>const path = require("path");
+}</code></pre><p class="paragraph u-mb-2">Až Webpack spustíme, tak začne zpracovávat soubor index.js. Podívá se jestli se v něm neimportují nějaké moduly, které také rekurzivně zpracuje. Vytvoří si graf závislostí a sloučí JavaScript kód do jednoho souboru. A pokud Webpack spouštíme v produkčním módu, tak také provede tree shaking, což je technika pro odstranění kódu, který jsme nepoužili.</p><p class="paragraph u-mb-2">Kromě vstupního souboru musíme také nastavit, kam se má umístit výsledný kód. To provedeme pomocí vlastnosti output, které jako hodnotu nastavíme objekt, kde specifikujeme absolutní cestu ke složce. Také můžeme nastavit pár dalších nastavení, jako je jméno výsledného souboru a tak dále. Mi si ještě zapneme nastavení clean, které zajistí, že se složka před umístěním výsledného souboru promaže. Cesta ke složce musí být absolutní, proto musíme pro její získání použít metodu resolve vestavěného NodeJS modulu jménem path. Jako parametr jí předáme cestu ke složce ve které se nachází konfigurační soubor (__dirname) a složku "dist". Složka "dist" ani nemusí existovat, automaticky se vytvoří.</p><pre class="code-box u-mb-4"><code>const path = require("path");
 
 module.exports = {
     entry: "./assets/js/index.js",
@@ -82,10 +10,7 @@ module.exports = {
         path: path.resolve(__dirname, "dist"), // absolutní cesta ke složce dist
         clean: true // složka se před umístěním výsledného souboru promaže
     }
-}</code></pre>
-                    <h2 id="spusteni-webpacku" class="heading-secondary u-mb-2">Spuštění Webpacku</h2>
-                    <p class="paragraph u-mb-2">Teď už bychom měli mít všechno nastavené tak, aby se náš JavaScript kód zpracoval a sjednotil do jednoho souboru. Můžeme tedy Webpack spustit. Na to si ale budeme muset v souboru package.json napsat skript. Takže si jej otevřeme a v části scripts napíšeme příkaz, pomocí kterého Webpack spustíme. Ten vidíte v následující ukázce.</p>
-                    <pre class="code-box u-mb-2"><code>{
+}</code></pre><h2 id="spusteni-webpacku" class="heading-secondary u-mb-2">Spuštění Webpacku</h2><p class="paragraph u-mb-2">Teď už bychom měli mít všechno nastavené tak, aby se náš JavaScript kód zpracoval a sjednotil do jednoho souboru. Můžeme tedy Webpack spustit. Na to si ale budeme muset v souboru package.json napsat skript. Takže si jej otevřeme a v části scripts napíšeme příkaz, pomocí kterého Webpack spustíme. Ten vidíte v následující ukázce.</p><pre class="code-box u-mb-2"><code>{
     "name": "webpack-app",
     "version": "1.0.0",
     "description": "",
@@ -101,14 +26,7 @@ module.exports = {
         "webpack": "^5.73.0",
         "webpack-cli": "^4.10.0"
     }
-}</code></pre>
-                    <p class="paragraph u-mb-2">Příkaz, který v předchozí ukázce vidíte, Webpack spustí s konfiguračním souborem jménem "webpack.config.js" v módu pro produkci. Později si vytvoříme jednu konfiguraci pro produkci a druhou pro vývoj. Prozatím nám ale bude stačit, že když tento příkaz spustíme, tak se nám JavaScript zpracuje pro produkci. Náš skript zapsaný v package.json můžeme spustit příkazem "npm run build". Pokud jste si skript uložili pod jiným názvem, tak samozřejmě použijete namísto názvu "build" svůj název.</p>
-                    <pre class="code-box u-mb-2"><code>npm run build</code></pre>
-                    <p class="paragraph u-mb-2">Poté co Webpack provede svoji práci, by se nám v kořenové složce našeho projektu měla objevit složka dist a v ní výsledný JavaScript soubor jménem main.js. Tento soubor obsahuje náš sloučený JavaScript kód, který je navíc minifikovaný, aby zabral méně místa.</p>
-                    <p class="paragraph u-mb-2">Později si Webpack nastavíme tak, aby nám do dist složky kopíroval i jiné soubory. Jen tak bychom si teď ale mohli v našem HTML souboru změnit script tag, aby odkazoval na náš zabalený JavaScript kód v dist složce. Aplikace by měla fungovat úplně stejně jako předtím a navíc ji teď ani nemusíme spouštět na webovém serveru, protože nepoužíváme JS moduly.</p>
-                    <pre class="code-box u-mb-2"><code>&lt;script src="./dist/main.js"&gt;&lt;/script&gt;</code></pre>
-                    <p class="paragraph u-mb-2">Pokud byste výslednému JavaScript souboru chtěli nastavit jiné jméno, tak můžete. Dělá se to pomocí vlastnosti filename v objektu, který předáváme vlastnosti output.</p>
-                    <pre class="code-box u-mb-4"><code>const path = require("path");
+}</code></pre><p class="paragraph u-mb-2">Příkaz, který v předchozí ukázce vidíte, Webpack spustí s konfiguračním souborem jménem "webpack.config.js" v módu pro produkci. Později si vytvoříme jednu konfiguraci pro produkci a druhou pro vývoj. Prozatím nám ale bude stačit, že když tento příkaz spustíme, tak se nám JavaScript zpracuje pro produkci. Náš skript zapsaný v package.json můžeme spustit příkazem "npm run build". Pokud jste si skript uložili pod jiným názvem, tak samozřejmě použijete namísto názvu "build" svůj název.</p><pre class="code-box u-mb-2"><code>npm run build</code></pre><p class="paragraph u-mb-2">Poté co Webpack provede svoji práci, by se nám v kořenové složce našeho projektu měla objevit složka dist a v ní výsledný JavaScript soubor jménem main.js. Tento soubor obsahuje náš sloučený JavaScript kód, který je navíc minifikovaný, aby zabral méně místa.</p><p class="paragraph u-mb-2">Později si Webpack nastavíme tak, aby nám do dist složky kopíroval i jiné soubory. Jen tak bychom si teď ale mohli v našem HTML souboru změnit script tag, aby odkazoval na náš zabalený JavaScript kód v dist složce. Aplikace by měla fungovat úplně stejně jako předtím a navíc ji teď ani nemusíme spouštět na webovém serveru, protože nepoužíváme JS moduly.</p><pre class="code-box u-mb-2"><code>&lt;script src="./dist/main.js"&gt;&lt;/script&gt;</code></pre><p class="paragraph u-mb-2">Pokud byste výslednému JavaScript souboru chtěli nastavit jiné jméno, tak můžete. Dělá se to pomocí vlastnosti filename v objektu, který předáváme vlastnosti output.</p><pre class="code-box u-mb-4"><code>const path = require("path");
 
 module.exports = {
     entry: "./assets/js/index.js",
@@ -117,15 +35,4 @@ module.exports = {
         path: path.resolve(__dirname, "dist"),
         clean: true
     }
-}</code></pre>
-                    <p class="paragraph u-mb-6">To by bylo pro tuto část vše. Začali jsme s konfigurací Webpacku a sloučili a zminifikovali si naše JavaScript soubory. V příští části si Webpack nakonfigurujeme tak, aby zpracovával i naše CSS a LESS soubory.</p>
-                    <div class="u-center-text">
-                        <a href="../zpracovani-css-stylu/" class="button"><span>pokračovat na další část</span></a>
-                    </div>
-                </main>
-            </div>
-        </div>
-        <footer class="footer"><p>Tento web vytvořil <a href="https://jirkasa.github.io/" target="_blank" class="link link--light">Jiří Satora</a></p></footer>
-    </div>
-</body>
-</html>
+}</code></pre><p class="paragraph u-mb-6">To by bylo pro tuto část vše. Začali jsme s konfigurací Webpacku a sloučili a zminifikovali si naše JavaScript soubory. V příští části si Webpack nakonfigurujeme tak, aby zpracovával i naše CSS a LESS soubory.</p><div class="u-center-text"><a href="../zpracovani-css-stylu/" class="button"><span>pokračovat na další část</span></a></div></main></div></div><footer class="footer"><p>Tento web vytvořil <a href="https://jirkasa.github.io/" target="_blank" class="link link--light">Jiří Satora</a></p></footer></div></body></html>
