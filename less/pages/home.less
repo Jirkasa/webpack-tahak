@@ -76,3 +76,76 @@
         gap: 1.6rem;
     }
 }
+
+.cheatsheets-section {
+    padding: 3.2rem 3.2rem 4.8rem;
+
+    &__content {
+        max-width: @grid-width;
+        margin: 0 auto;
+    }
+
+    &__cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: @grid-gutter;
+        justify-content: center;
+
+        > div {
+            width: ~"calc(100%/3 - ((@{grid-gutter} * 2) / 3))";
+        }
+    }
+}
+
+.about-section {
+    padding: 3.2rem;
+
+    background-color: @colors[grey-20];
+
+    position: relative;
+
+    &__container {
+        max-width: @grid-width;
+        margin: 0 auto;
+
+        #display-12-grid();
+    }
+
+    &__content {
+        grid-column: 3 / span 8;
+    }
+
+    &__pattern {
+        position: absolute;
+        top: 0;
+
+        width: 50%;
+        height: 100%;
+
+        &::before, &::after {
+            content: "";
+            display: block;
+
+            height: 50%;
+
+            background-repeat: no-repeat;
+        }
+        &::before {
+            background-image: url("../assets/img/about-pattern-1.svg");
+            background-position: 2.4rem 2.4rem;
+        }
+        &::after {
+            background-image: url("../assets/img/about-pattern-2.svg");
+            background-position: left 2.4rem bottom 2.4rem;
+        }
+
+        &--left {
+            left: 0;
+        }
+
+        &--right {
+            right: 0;
+            transform: rotate(180deg);
+        }
+    }
+}
