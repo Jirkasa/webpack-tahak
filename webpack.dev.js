@@ -8,12 +8,7 @@ module.exports = merge(commonConfig, {
                 test: /\.less$/,
                 use: [
                     "style-loader",
-                    {
-                        loader: "css-loader",
-                        options: {
-                            url: false
-                        }
-                    },
+                    "css-loader",
                     "less-loader"
                 ]
             }

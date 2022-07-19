@@ -11,12 +11,7 @@ module.exports = merge(commonConfig, {
                 test: /\.less$/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    {
-                        loader: "css-loader",
-                        options: {
-                            url: false
-                        }
-                    },
+                    "css-loader",
                     {
                         loader: "postcss-loader",
                         options: {
@@ -24,7 +19,8 @@ module.exports = merge(commonConfig, {
                                 plugins: [
                                     ["postcss-preset-env", {}],
                                     purgecss({
-                                        content: ['./**/*.html']
+                                        content: ['./**/*.html'],
+                                        safelist: ["header--fixed"]
                                     })
                                 ]
                             }
