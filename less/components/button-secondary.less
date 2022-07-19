@@ -18,13 +18,17 @@
         align-items: center;
         gap: .4rem;
 
+        // background image for special effect
         background-image: linear-gradient(110deg, transparent 40%, rgba(@colors[primary-light], .5) 42%, rgba(@colors[primary-light], .5) 58%, transparent 60%);
         background-size: 200%;
         background-position-x: 130%;
 
         transition: background-position .3s, background-color .1s .15s;
+
+        user-select: none;
     }
 
+    // icon
     svg {
         width: 2rem;
         height: 2rem;

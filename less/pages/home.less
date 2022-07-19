@@ -1,11 +1,17 @@
 .home-intro-section {
-    min-height: ~"calc(100vh - @{header-height})";
+    height: ~"calc(100vh - @{header-height})";
+    max-height: 100rem;
 
     background-color: @colors[grey-20];
 
     display: flex;
 
     position: relative;
+
+    #respond-phone({
+        height: auto;
+        min-height: ~"calc(100vh - @{header-height})";
+    });
 
     // background patterns
     &::before, &::after {
@@ -19,6 +25,10 @@
         height: 100%;
 
         background-repeat: no-repeat;
+
+        #respond-phone({
+            background-size: 15rem;
+        });
     }
     &::before {
         background-image: url("../assets/img/intro-pattern-top-left.svg");
@@ -27,6 +37,12 @@
     &::after {
         background-image: url("../assets/img/intro-pattern-bottom-left.svg");
         background-position: left 2.4rem bottom 2.4rem;
+
+        #respond-tab-port({
+            background-image: url("../assets/img/intro-pattern-top-left.svg");
+            background-position: 2.4rem 2.4rem;
+            transform: rotate(180deg);
+        })
     }
 
     &__container {
@@ -39,12 +55,25 @@
         align-items: center;
 
         z-index: 1;
+
+        #respond-phone({
+            gap: 0;
+        });
     }
 
     &__content-side {
         grid-column: 2 / span 7;
 
         padding: 3.2rem 0;
+
+        #respond-tab-port({
+            grid-column: 3 / span 10;
+            text-align: center;
+            padding: 3.2rem;
+        });
+        #respond-phone({
+            grid-column: 2 / span 12;
+        });
     }
 
     &__image-side {
@@ -64,6 +93,10 @@
         align-items: center;
         justify-content: stretch;
 
+        #respond-tab-port({
+            display: none;
+        });
+
         img {
             padding-left: @grid-column-width + 3.2rem;
             width: 100%;
@@ -73,7 +106,12 @@
 
     &__buttons {
         display: flex;
+        flex-wrap: wrap;
         gap: 1.6rem;
+
+        #respond-tab-port({
+            justify-content: center;
+        });
     }
 }
 
@@ -93,6 +131,13 @@
 
         > div {
             width: ~"calc(100%/3 - ((@{grid-gutter} * 2) / 3))";
+
+            #respond-tab-port({
+                width: ~"calc(100%/2 - (@{grid-gutter} / 2))";
+            });
+            #respond-phone({
+                width: 100%;
+            });
         }
     }
 }
@@ -115,6 +160,10 @@
 
     &__content {
         grid-column: 3 / span 8;
+
+        #respond-tab-port({
+            grid-column: span 12;
+        })
     }
 
     &__pattern {
@@ -123,6 +172,10 @@
 
         width: 50%;
         height: 100%;
+
+        #respond-tab-port({
+            display: none;
+        });
 
         &::before, &::after {
             content: "";
@@ -135,10 +188,18 @@
         &::before {
             background-image: url("../assets/img/about-pattern-1.svg");
             background-position: 2.4rem 2.4rem;
+
+            #respond-tab-land({
+                background-size: 15rem;
+            });
         }
         &::after {
             background-image: url("../assets/img/about-pattern-2.svg");
             background-position: left 2.4rem bottom 2.4rem;
+
+            #respond-tab-land({
+                background-size: 9.3rem;
+            });
         }
 
         &--left {

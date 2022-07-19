@@ -6,6 +6,13 @@
     position: sticky;
     top: @header-height;
 
+    max-height: ~"calc(100vh - @{header-height})";
+    overflow-y: auto;
+
+    #respond-tab-port({
+        height: ~"calc(100vh - @{header-height})";
+    });
+
     li:not(:last-child) {
         margin-bottom: .8rem;
     }
@@ -31,6 +38,8 @@
             transition: all .2s;
 
             padding: 1.2rem 1.6rem;
+
+            user-select: none;
         }
 
         &:hover, &--active:link, &--active:visited {

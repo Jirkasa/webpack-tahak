@@ -11,10 +11,15 @@
 
         position: relative;
 
+        #respond-phone({
+            gap: 0;
+        });
+
         // -------- ILLUSTRATION ---------
         background-image: url("../../../assets/img/side-illustration.svg");
         background-position: top 0 right .4rem;
         background-repeat: repeat-y;
+
         &::before {
             content: "";
 
@@ -28,17 +33,67 @@
             background-image: url("../../../assets/img/side-illustration-top-part.svg");
             background-repeat: no-repeat;
         }
+
+        @media (max-width: #pxToEm(1100)[]) {
+            background-image: none;
+            &::before {
+                display: none;
+            }
+        }
+        #respond-tab-port({
+            background-image: url("../../../assets/img/side-illustration.svg");
+            &::before {
+                display: block;
+            }
+        });
+        @media (max-width: #pxToEm(700)[]) {
+            background-image: none;
+            &::before {
+                display: none;
+            }
+        }
         // -------------------------------
     }
 
     &__sidebar {
         grid-column: span 3;
         background-color: @colors[grey-20];
+
+        @media (max-width: #pxToEm(1100)[]) {
+            grid-column: span 4;
+        }
+        #respond-tab-port({
+            position: fixed;
+            left: 0;
+            top: @header-height;
+            transform: translateX(-100%);
+            z-index: 10;
+
+            height: ~"calc(100vh - @{header-height})";
+            max-width: ~"calc(100vw - 4rem)";
+
+            transition: all .2s;
+        });
+    }
+    &__sidebar-checkbox {
+        display: none;
+    }
+    &__sidebar-checkbox:checked + &__sidebar {
+        #respond-tab-port({
+            transform: translateX(0);
+        });
     }
 
     &__content {
         grid-column: span 8;
 
         padding: 3.2rem 0;
+        
+        #respond-tab-port({
+            grid-column: span 11;
+        });
+        @media (max-width: #pxToEm(700)[]) {
+            grid-column: span 12;
+        }
     }
 }

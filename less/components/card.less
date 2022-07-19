@@ -1,6 +1,7 @@
 .card {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 1.6rem;
 
     padding: 2.4rem;
@@ -10,6 +11,7 @@
 
     &__header {
         display: flex;
+        align-items: center;
         gap: .8rem;
 
         margin-bottom: 1.6rem;
@@ -29,5 +31,9 @@
         background-image: url("../assets/img/card-pattern.svg");
         background-repeat: no-repeat;
         background-position: bottom 0 right 0;
+
+        @media (max-width: #pxToEm(700)[]) {
+            background-image: none;
+        }
     }
 }

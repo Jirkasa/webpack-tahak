@@ -1,0 +1,45 @@
+.nav-button {
+    display: none;
+    width: 4rem;
+    height: 4rem;
+
+    padding: .8rem;
+
+    background-color: @colors[primary];
+
+    position: absolute;
+    top: 0;
+    left: 100%;
+
+    border-radius: 0 .4rem .4rem 0;
+
+    cursor: pointer;
+
+    transition: all .2s;
+
+    #respond-tab-port({
+        display: block;
+    });
+
+    &:hover {
+        background-color: darken(@colors[primary], 8%);
+    }
+
+    svg {
+        width: 100%;
+        height: 100%;
+        fill: @colors[grey-80];
+
+        transition: all .2s;
+    }
+}
+
+.nav-button-checkbox {
+    display: none;
+
+    &:checked + nav > .nav-button {
+        svg {
+            transform: scaleX(-1);
+        }
+    }
+}

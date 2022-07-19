@@ -16,15 +16,20 @@
             <header id="header" class="header">
                 <div class="header__content">
                     <a href="../../" class="header__title">Webpack Tahák</a>
+                    <input type="checkbox" id="header-nav" class="header__navigation-checkbox toggle-button-checkbox">
                     <div class="header__navigation">
                         <a href="../co-je-to-webpack/" class="header-link header-link--active">Tutoriál</a>
                         <a href="../../tahak/vstupni-soubory/" class="header-link">Tahák</a>
                     </div>
+                    <label for="header-nav" class="toggle-button">
+                        <div class="toggle-button__icon"></div>
+                    </label>
                 </div>
             </header>
         </div>
         <div class="article-layout">
             <div class="article-layout__container">
+                <input type="checkbox" id="side-nav" class="article-layout__sidebar-checkbox nav-button-checkbox">
                 <nav class="article-layout__sidebar">
                     <ul class="navigation">
                         <li><a href="../co-je-to-webpack/" class="navigation__item">Co je to Webpack</a></li>
@@ -34,6 +39,11 @@
                         <li><a href="../html-soubor-a-obrazky/" class="navigation__item">HTML soubor a obrázky</a></li>
                         <li><a href="../konfigurace-pro-vyvoj/" class="navigation__item">Konfigurace pro vývoj</a></li>
                     </ul>
+                    <label for="side-nav" class="nav-button">
+                        <svg>
+                            <use xlink:href="../../assets/img/icon-sprite.svg#icon-arrow_forward_ios"></use>
+                        </svg>
+                    </label>
                 </nav>
                 <main class="article-layout__content">
                     <h1 class="heading-primary u-mb-6">Zabalení JavaScriptu</h1>

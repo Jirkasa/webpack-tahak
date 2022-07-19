@@ -19,8 +19,11 @@
         padding: 1.2rem 1.6rem;
 
         position: relative;
+
+        user-select: none;
     }
 
+    // for hover animation
     &::before {
         content: "";
         #center-pos-abs();
@@ -37,6 +40,7 @@
         transition: all cubic-bezier(0.76, 0, 0.24, 1) .2s;
     }
 
+    // icon
     svg {
         flex-shrink: 0;
 
