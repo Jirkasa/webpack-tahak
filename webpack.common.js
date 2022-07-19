@@ -3,7 +3,6 @@ const fs = require("fs");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { webpack } = require("webpack");
 
 // CREATE PLUGINS FOR TUTORIAL PAGES
 const htmlPluginsForTutorialPages = [];
@@ -45,8 +44,8 @@ module.exports = {
                     to: path.resolve(__dirname, "dist")
                 },
                 {
-                    from: path.resolve(__dirname, "assets/js/*").replace(/\\/g, "/"),
-                    to: path.resolve(__dirname, "dist")
+                    from: path.resolve(__dirname, "assets/js/highlight.min.js"),
+                    to: path.resolve(__dirname, "dist", "assets", "js"),
                 },
                 {
                     from: path.resolve(__dirname, "assets/webpack-tutorial-app-codes/*").replace(/\\/g, "/"),

@@ -1,6 +1,8 @@
 const { merge } = require("webpack-merge");
 const commonConfig = require("./webpack.common");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const purgecss = require('@fullhuman/postcss-purgecss');
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 module.exports = merge(commonConfig, {
     module: {
@@ -15,13 +17,31 @@ module.exports = merge(commonConfig, {
                             url: false
                         }
                     },
+                    {
+                        loader: "postcss-loader",
+                        options: {
+                            postcssOptions: {
+                                plugins: [
+                                    ["postcss-preset-env", {}],
+                                    purgecss({
+                                        content: ['./**/*.html']
+                                    })
+                                ]
+                            }
+                        }
+                    },
                     "less-loader"
                 ]
             }
+        ]
+    },
+    optimization: {
+        minimizer: [
+            `...`,
+            new CssMinimizerPlugin()
         ]
     },
     plugins: [
         new MiniCssExtractPlugin()
     ]
 });
-// todo - ještě to minifikovat, použít PurgeCSS, atd.
